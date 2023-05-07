@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Restaurant.index');
 });
+
+Route::get('/inner-page', function () {
+    return view('Restaurant.inner-page');
+});
