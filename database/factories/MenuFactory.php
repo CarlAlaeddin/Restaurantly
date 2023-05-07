@@ -21,7 +21,6 @@ class MenuFactory extends Factory
     {
         return [
             'user_id'       =>   User::all()->random()->id,
-            'category_id'   =>   Category::all()->random()->id,
             'name'          =>   $this->faker->unique()->name,
             'price'         =>   $this->faker->numberBetween(100,1000),
             'image'         =>   $this->faker->imageUrl,

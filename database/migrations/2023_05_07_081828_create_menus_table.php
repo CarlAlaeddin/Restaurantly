@@ -14,15 +14,12 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unsigned();
-            $table->foreignId('category_id')->unsigned();
             $table->string('name')->unique();
             $table->string('price');
             $table->string('image');
             $table->tinyInteger('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
-
         });
     }
 
