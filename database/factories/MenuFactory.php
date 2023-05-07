@@ -2,7 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
+
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use JetBrains\PhpStorm\ArrayShape;
@@ -17,10 +18,11 @@ class MenuFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    #[ArrayShape(['user_id' => "\Illuminate\Support\HigherOrderCollectionProxy|mixed", 'category_id' => "mixed", 'name' => "string", 'price' => "int", 'image' => "string", 'status' => "int"])] public function definition(): array
+    #[ArrayShape(['user_id' => "\Illuminate\Support\HigherOrderCollectionProxy|mixed",'tag_id' => "\Illuminate\Support\HigherOrderCollectionProxy|mixed", 'category_id' => "mixed", 'name' => "string", 'price' => "int", 'image' => "string", 'status' => "int"])] public function definition(): array
     {
         return [
             'user_id'       =>   User::all()->random()->id,
+            'tag_id'        =>   Tag::all()->random()->id,
             'name'          =>   $this->faker->unique()->name,
             'price'         =>   $this->faker->numberBetween(100,1000),
             'image'         =>   $this->faker->imageUrl,

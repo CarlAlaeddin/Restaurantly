@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Choose;
 use App\Models\Menu;
+use App\Models\Tag;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -25,8 +26,9 @@ class RestaurantController extends Controller
             ->orderBy('id', 'desc')
             ->where('status', 'LIKE', 1)
             ->get();
+        $tags = Tag::query()->orderBy('id','desc')->where('status','LIKE',1)->get();
 
-        return view('Restaurant.index', compact(['chooses', 'menus']));
+        return view('Restaurant.index', compact(['chooses', 'menus', 'tags']));
     }
 
     /**

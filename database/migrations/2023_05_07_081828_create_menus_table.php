@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unsigned();
+            $table->foreignId('tag_id')->unsigned();
             $table->string('name')->unique();
             $table->string('slug')->nullable();
             $table->string('price');
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->tinyInteger('status');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 

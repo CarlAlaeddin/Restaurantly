@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tag;
 use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +20,7 @@ class Menu extends Model
 
     protected $fillable = [
         'user_id',
+        'tag_id',
         'category_id',
         'name',
         'price',
@@ -58,5 +60,15 @@ class Menu extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'category_menu', 'menu_id', 'category_id');
+    }
+
+    /**
+     * Get the tag that owns the Menu
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tag(): BelongsTo
+    {
+        return $this->belongsTo(Tag::class);
     }
 }
