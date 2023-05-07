@@ -1,5 +1,5 @@
 @props([
-    'type','name','id','placeholder'
+    'type','name','id','placeholder','value'
 ])
 <input
     type="{{ $type }}"
@@ -7,4 +7,5 @@
     id="{{ $id }}"
     placeholder="{{ $placeholder }}"
     {{ $attributes->merge(['class' => "form-control"]) }}
+    value="{{ $value }}"
 >

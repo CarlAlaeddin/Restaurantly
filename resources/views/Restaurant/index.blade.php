@@ -42,31 +42,9 @@
             </div>
 
             <div class="row">
-
-                <div class="col-lg-4">
-                    <div class="box" data-aos="zoom-in" data-aos-delay="100">
-                        <span>01</span>
-                        <h4>Lorem Ipsum</h4>
-                        <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mt-4 mt-lg-0">
-                    <div class="box" data-aos="zoom-in" data-aos-delay="200">
-                        <span>02</span>
-                        <h4>Repellat Nihil</h4>
-                        <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mt-4 mt-lg-0">
-                    <div class="box" data-aos="zoom-in" data-aos-delay="300">
-                        <span>03</span>
-                        <h4> Ad ad velit qui</h4>
-                        <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
-                    </div>
-                </div>
-
+                @foreach($chooses as $choose)
+                    <x-choose-box :choose="$choose" />
+                @endforeach
             </div>
 
         </div>
@@ -101,86 +79,6 @@
                     </div>
                     <div class="menu-ingredients">
                         Lorem, deren, trataro, filede, nerada
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-specialty">
-                    <img src="{{ asset('Restaurant/assets/img/menu/bread-barrel.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Bread Barrel</a><span>$6.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        Lorem, deren, trataro, filede, nerada
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-starters">
-                    <img src="{{ asset('Restaurant/assets/img/menu/cake.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Crab Cake</a><span>$7.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-salads">
-                    <img src="{{ asset('Restaurant/assets/img/menu/caesar.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Caesar Selections</a><span>$8.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        Lorem, deren, trataro, filede, nerada
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-specialty">
-                    <img src="{{ asset('Restaurant/assets/img/menu/tuscan-grilled.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Tuscan Grilled</a><span>$9.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-starters">
-                    <img src="{{ asset('Restaurant/assets/img/menu/mozzarella.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Mozzarella Stick</a><span>$4.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        Lorem, deren, trataro, filede, nerada
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-salads">
-                    <img src="{{ asset('Restaurant/assets/img/menu/greek-salad.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Greek Salad</a><span>$9.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        Fresh spinach, crisp romaine, tomatoes, and Greek olives
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-salads">
-                    <img src="{{ asset('Restaurant/assets/img/menu/spinach-salad.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Spinach Salad</a><span>$9.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-                    </div>
-                </div>
-
-                <div class="col-lg-6 menu-item filter-specialty">
-                    <img src="{{ asset('Restaurant/assets/img/menu/lobster-roll.jpg') }}" class="menu-img" alt="">
-                    <div class="menu-content">
-                        <a href="#">Lobster Roll</a><span>$12.95</span>
-                    </div>
-                    <div class="menu-ingredients">
-                        Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
                     </div>
                 </div>
 
@@ -396,7 +294,7 @@
                 <p>Book a Table</p>
             </div>
             {{-- start form book a table for ReservationTables --}}
-            <x-form action="index.php" method="POST">
+            <x-form action="" method="POST">
                 <div class="row">
 
                     <div @class(['col-lg-4', 'col-md-6', 'form-group'])>

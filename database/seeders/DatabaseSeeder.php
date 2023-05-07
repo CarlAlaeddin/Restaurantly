@@ -12,8 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+         \App\Models\User::factory(10)->create();
          \App\Models\Profile::factory(30)->create();
+         \App\Models\Choose::factory(6)->create();
 
          \App\Models\User::factory()->create([
              'name'             =>      'Carl Alaeddin',
@@ -27,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'beloved'           =>      'Football',
             'biography'         =>      'Im web developer !',
             'status'            =>      1,
-            'role'            =>      1,
+            'role'              =>      1,
         ]);
 
     }
