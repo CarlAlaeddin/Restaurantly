@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->unsigned();
             $table->string('name')->unique();
+            $table->string('slug')->nullable();
             $table->string('price');
             $table->string('image');
             $table->tinyInteger('status');

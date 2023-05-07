@@ -69,9 +69,9 @@
             <div class="col-lg-12 d-flex justify-content-center">
                 <ul id="menu-flters">
                     <li data-filter="*" class="filter-active">All</li>
-                    <li data-filter=".filter-starters">Starters</li>
-                    <li data-filter=".filter-salads">Salads</li>
-                    <li data-filter=".filter-specialty">Specialty</li>
+                    @foreach ($menus as $menu)
+                        <li data-filter=".filter-{{ $menu->slug }}">{{ $menu->name }}</li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
             @foreach($menus as $menu)
-            <div class="col-lg-6 menu-item filter-specialty">
+            <div class="col-lg-6 menu-item filter-{{ $menu->slug }}">
                 <img src="{{ $menu->image }}" class="menu-img" alt="">
                 <div class="menu-content">
                     <a href="#">{{ $menu->name }}</a><span>${{ $menu->price }}</span>

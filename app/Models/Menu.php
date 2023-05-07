@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Menu extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $table = 'menus';
 
@@ -24,6 +25,20 @@ class Menu extends Model
         'image',
         'status',
     ];
+
+
+    /**
+     * Summary of sluggable
+     * @return array<array>
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug'  => [
+                'source'    => 'name'
+            ]
+        ];
+    }
 
     /**
      * Get the user that owns the Menu
