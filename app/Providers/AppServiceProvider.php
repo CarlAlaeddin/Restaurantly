@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\View\Components\Alert\Error;
 use App\View\Components\Forms\Button;
 use App\View\Components\Forms\Form;
+use App\View\Components\Sections\IndexPage\ChooseBox;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('button',Button::class);
         #__________________________________________________ Alerts
         Blade::component('error',Error::class);
+        #__________________________________________________ Element
+        Blade::component('choose-box',ChooseBox::class);
 
     }
 }
