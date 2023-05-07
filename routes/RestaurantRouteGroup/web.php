@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Restaurant.index');
-});
 
-Route::get('/inner-page', function () {
-    return view('Restaurant.inner-page');
-});
+Route::prefix('/')
+    ->controller(\App\Http\Controllers\RestaurantController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/inner-page', 'inner')->name('index.inner');
+    });
