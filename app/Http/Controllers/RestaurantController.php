@@ -25,6 +25,7 @@ class RestaurantController extends Controller
             ->orderBy('id', 'desc')
             ->where('status', 'LIKE', 1)
             ->get();
+
         return view('Restaurant.index', compact(['chooses', 'menus']));
     }
 
