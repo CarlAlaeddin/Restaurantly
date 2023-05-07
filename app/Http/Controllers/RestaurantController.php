@@ -8,7 +8,7 @@ use App\Models\Tag;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-
+use Illuminate\Support\Facades\Cache;
 
 class RestaurantController extends Controller
 {
@@ -17,16 +17,29 @@ class RestaurantController extends Controller
      */
     public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        $chooses = Choose::query()
+        // time for cache =>  sec 3600 = 1 hour
+        $ttl = 3600;
+
+        $chooses = Cache::remember('choose', $ttl, function(){
+            return Choose::query()
             ->orderBy('id', 'asc')
             ->where('status', 'LIKE', 1)
             ->get();
+        });
 
-        $menus = Menu::query()
+        $menus = Cache::remember('menu', $ttl, function(){
+            return Menu::query()
             ->orderBy('id', 'desc')
             ->where('status', 'LIKE', 1)
             ->get();
-        $tags = Tag::query()->orderBy('id','desc')->where('status','LIKE',1)->get();
+        });
+
+        $tags = Cache::remember('tag', $ttl, function () {
+            return Tag::query()
+            ->orderBy('id','desc')
+            ->where('status','LIKE',1)
+            ->get();
+        });
 
         return view('Restaurant.index', compact(['chooses', 'menus', 'tags']));
     }
