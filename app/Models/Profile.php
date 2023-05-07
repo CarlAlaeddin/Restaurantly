@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property mixed $user_id
+ * @property mixed $role
+ * @property mixed $user
  */
 class Profile extends Model
 {
