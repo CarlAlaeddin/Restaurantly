@@ -20,7 +20,7 @@ class ChooseFactory extends Factory
     {
         return [
             'user_id'        => User::all()->random()->id,
-            'title'          => $this->faker->unique()->title,
+            'title'          => $this->faker->unique()->jobTitle,
             'description'    => $this->faker->text,
             'status'         => $this->faker->numberBetween(0,1),
         ];
