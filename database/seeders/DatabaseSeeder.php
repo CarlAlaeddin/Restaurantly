@@ -13,10 +13,22 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
+         \App\Models\Profile::factory(30)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+         \App\Models\User::factory()->create([
+             'name'             =>      'Carl Alaeddin',
+             'email'            =>      'Carl.Alaeddin@gmail.com',
+         ]);
+        \App\Models\Profile::factory()->create([
+            'user_id'           =>      31,
+            'image'             =>      'images/profiles/8763487638.jpg',
+            'phone_number'      =>      '09198382834',
+            'address'           =>      'Iran ,Tehran, TehranPars, number 75',
+            'beloved'           =>      'Football',
+            'biography'         =>      'Im web developer !',
+            'status'            =>      1,
+            'role'            =>      1,
+        ]);
+
     }
 }
