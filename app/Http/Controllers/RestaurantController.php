@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Choose;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -14,7 +15,8 @@ class RestaurantController extends Controller
      */
     public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        return view('/Restaurant.index');
+        $chooses = Choose::query()->orderBy('id','asc')->where('status','LIKE',1)->get();
+        return view('/Restaurant.index',compact(['chooses']));
     }
 
     /**
