@@ -67,19 +67,19 @@
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
             <div class="col-lg-12 d-flex justify-content-center">
-                <ul id="menu-flters">
+                <menu-filter id="menu-flters">
                     <li data-filter="*" class="filter-active">All</li>
                     @foreach ($tags as $tag)
-                        <li data-filter=".filter-{{ $tag->slug }}">{{ $tag->tag }}</li>
+                        <li data-filter=".filter-{{$tag->slug}}">{{ $tag->tag }}</li>
                     @endforeach
-                </ul>
+                </menu-filter>
             </div>
         </div>
 
         <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
 
             @foreach($menus as $menu)
-            <div class="col-lg-6 menu-item filter-{{ $menu->tag->slug }}">
+            <div class="col-lg-6 menu-item filter-{{$menu->tag->slug}}">
                 <img src="{{ $menu->image }}" class="menu-img" alt="">
                 <div class="menu-content">
                     <a href="#">{{ $menu->name }}</a><span>${{ $menu->price }}</span>
