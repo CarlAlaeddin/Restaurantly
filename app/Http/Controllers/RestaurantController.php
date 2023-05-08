@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Choose;
 use App\Models\Event;
+use App\Models\Gallery;
 use App\Models\Menu;
 use App\Models\Special;
 use App\Models\Tag;
@@ -60,6 +61,16 @@ class RestaurantController extends Controller
                 )->get();
         });
 
+        $galleries = Cache::remember('gallery', $ttl, function () {
+            return Gallery::query()
+                ->orderBy('created_at', 'desc')
+                ->where(
+                    'status',
+                    'LIKE',
+                    1
+                )->get();
+        });
+
         return view(
             'Restaurant.index',
             compact([
@@ -67,7 +78,8 @@ class RestaurantController extends Controller
                 'menus',
                 'tags',
                 'specials',
-                'events'
+                'events',
+                'galleries'
             ])
         );
     }
