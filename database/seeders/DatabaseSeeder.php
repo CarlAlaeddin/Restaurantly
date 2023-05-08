@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\Tag::factory(5)->create();
          \App\Models\Menu::factory(50)->create();
          \App\Models\Category::factory(5)->create();
+         \App\Models\Special::factory(5)->create();
 
          \App\Models\User::factory()->create([
              'name'             =>      'Carl Alaeddin',

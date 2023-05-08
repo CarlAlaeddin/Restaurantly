@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Choose;
 use App\Models\Menu;
+use App\Models\Special;
 use App\Models\Tag;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -41,7 +42,9 @@ class RestaurantController extends Controller
             ->get();
         });
 
-        return view('Restaurant.index', compact(['chooses', 'menus', 'tags']));
+        $specials = Special::query()->orderBy('id','desc')->where('status','LIKE',1)->get();
+
+        return view('Restaurant.index', compact(['chooses', 'menus', 'tags', 'specials']));
     }
 
     /**
