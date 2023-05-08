@@ -6,7 +6,7 @@
 <form
     action="{{ $action }}"
     method="{{ $method }}"
-    {{ $attributes->merge(['class'             =>      "book-form",])}}
+    {{ $attributes->merge(['class' =>   "book-form",])}}
 >
     @csrf
     {{ $slot }}
