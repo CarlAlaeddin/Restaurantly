@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->unsigned();
+            $table->string('image');
+            $table->string('title')->unique();
+            $table->string('slug')->nullable();
+            $table->integer('price');
+            $table->text('body');
+            $table->tinyInteger('status');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

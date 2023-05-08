@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Choose;
+use App\Models\Event;
 use App\Models\Menu;
 use App\Models\Special;
 use App\Models\Tag;
@@ -21,35 +22,46 @@ class RestaurantController extends Controller
         // time for cache =>  sec 3600 = 1 hour
         $ttl = 3600;
 
-        $chooses = Cache::remember('choose', $ttl, function(){
+        $chooses = Cache::remember('choose', $ttl, function () {
             return Choose::query()
-            ->orderBy('id', 'asc')
-            ->where('status', 'LIKE', 1)
-            ->get();
+                ->orderBy('id', 'asc')
+                ->where('status', 'LIKE', 1)
+                ->get();
         });
 
-        $menus = Cache::remember('menu', $ttl, function(){
+        $menus = Cache::remember('menu', $ttl, function () {
             return Menu::query()
-            ->orderBy('id', 'desc')
-            ->where('status', 'LIKE', 1)
-            ->get();
+                ->orderBy('id', 'desc')
+                ->where('status', 'LIKE', 1)
+                ->get();
         });
 
         $tags = Cache::remember('tag', $ttl, function () {
             return Tag::query()
-            ->orderBy('id','desc')
-            ->where('status','LIKE',1)
-            ->get();
-        });
-
-        $specials = Cache::remember('special', $ttl,function(){
-            return Special::query()
-                ->orderBy('id','desc')
-                ->where('status','LIKE',1)
+                ->orderBy('id', 'desc')
+                ->where('status', 'LIKE', 1)
                 ->get();
         });
 
-        return view('Restaurant.index', compact(['chooses', 'menus', 'tags', 'specials']));
+        $specials = Cache::remember('special', $ttl, function () {
+            return Special::query()
+                ->orderBy('id', 'desc')
+                ->where('status', 'LIKE', 1)
+                ->get();
+        });
+
+        $events = Event::query()->orderBy('created_at', 'desc')->where('status', 'LIKE', 1)->get();
+
+        return view(
+            'Restaurant.index',
+            compact([
+                'chooses',
+                'menus',
+                'tags',
+                'specials',
+                'events'
+            ])
+        );
     }
 
     /**
