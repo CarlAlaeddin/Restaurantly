@@ -50,7 +50,15 @@ class RestaurantController extends Controller
                 ->get();
         });
 
-        $events = Event::query()->orderBy('created_at', 'desc')->where('status', 'LIKE', 1)->get();
+        $events = Cache::remember('gallery', $ttl, function () {
+            return Event::query()
+                ->orderBy('created_at', 'desc')
+                ->where(
+                    'status',
+                    'LIKE',
+                    1
+                )->get();
+        });
 
         return view(
             'Restaurant.index',
