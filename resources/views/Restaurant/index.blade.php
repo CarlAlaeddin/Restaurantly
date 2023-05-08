@@ -372,8 +372,7 @@
             @foreach ($galleries as $gallery)
             <div class="col-lg-3 col-md-4">
                 <div class="gallery-item">
-                    <a href="{{ $gallery->image }}" class="gallery-lightbox"
-                        data-gall="gallery-item">
+                    <a href="{{ $gallery->image }}" class="gallery-lightbox" data-gall="gallery-item">
                         <img src="{{ $gallery->image }}" alt="" class="img-fluid">
                     </a>
                 </div>
@@ -396,59 +395,36 @@
 
         <div class="row">
 
-            <div class="col-lg-4 col-md-6">
-                <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="{{ asset('Restaurant/assets/img/chefs/chefs-1.jpg') }}" class="img-fluid" alt="">
+            @foreach ($chefs as $chef)
+            <div class="col-lg-3 col-md-6">
+                <div class="member rounded" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="{{ $chef->image }}" class="img-fluid rounded" alt="{{ $chef->name }}">
                     <div class="member-info">
                         <div class="member-info-content">
-                            <h4>Walter White</h4>
-                            <span>Master Chef</span>
+                            <h4>{{ $chef->name }}</h4>
+                            @switch($chef->position)
+                                @case(1)
+                                    @php $position = "Master Chef" @endphp
+                                    @break
+                                @case(2)
+                                    @php $position = "Patissier" @endphp
+                                    @break
+                                @case(3)
+                                    @php $position = "Cook" @endphp
+                                    @break
+                            @endswitch
+                            <span>{{ $position }}</span>
                         </div>
                         <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
-                            <a href=""><i class="bi bi-instagram"></i></a>
-                            <a href=""><i class="bi bi-linkedin"></i></a>
+                            <a href="{{ $chef->twitter }}"><i class="bi bi-twitter"></i></a>
+                            <a href="{{ $chef->facebook }}"><i class="bi bi-facebook"></i></a>
+                            <a href="{{ $chef->instagram }}"><i class="bi bi-instagram"></i></a>
+                            <a href="{{ $chef->linkedin }}"><i class="bi bi-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="member" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="{{ asset('Restaurant/assets/img/chefs/chefs-2.jpg') }}" class="img-fluid" alt="">
-                    <div class="member-info">
-                        <div class="member-info-content">
-                            <h4>Sarah Jhonson</h4>
-                            <span>Patissier</span>
-                        </div>
-                        <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
-                            <a href=""><i class="bi bi-instagram"></i></a>
-                            <a href=""><i class="bi bi-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="member" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="{{ asset('Restaurant/assets/img/chefs/chefs-3.jpg') }}" class="img-fluid" alt="">
-                    <div class="member-info">
-                        <div class="member-info-content">
-                            <h4>William Anderson</h4>
-                            <span>Cook</span>
-                        </div>
-                        <div class="social">
-                            <a href=""><i class="bi bi-twitter"></i></a>
-                            <a href=""><i class="bi bi-facebook"></i></a>
-                            <a href=""><i class="bi bi-instagram"></i></a>
-                            <a href=""><i class="bi bi-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
 

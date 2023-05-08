@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chef;
 use App\Models\Choose;
 use App\Models\Event;
 use App\Models\Gallery;
@@ -71,6 +72,13 @@ class RestaurantController extends Controller
                 )->get();
         });
 
+        $chefs = Cache::remember('chef', $ttl, function () {
+            return Chef::query()
+                ->orderBy('position', 'asc')
+                ->where('status', 'LIKE', 1)
+                ->get();
+        });
+
         return view(
             'Restaurant.index',
             compact([
@@ -79,7 +87,8 @@ class RestaurantController extends Controller
                 'tags',
                 'specials',
                 'events',
-                'galleries'
+                'galleries',
+                'chefs'
             ])
         );
     }

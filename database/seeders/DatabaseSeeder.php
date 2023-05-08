@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\Special::factory(5)->create();
          \App\Models\Event::factory(20)->create();
          \App\Models\Gallery::factory(60)->create();
+         \App\Models\Chef::factory(60)->create();
 
          \App\Models\User::factory()->create([
              'name'             =>      'Carl Alaeddin',
