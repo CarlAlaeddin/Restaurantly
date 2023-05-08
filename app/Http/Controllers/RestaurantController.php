@@ -42,7 +42,12 @@ class RestaurantController extends Controller
             ->get();
         });
 
-        $specials = Special::query()->orderBy('id','desc')->where('status','LIKE',1)->get();
+        $specials = Cache::remember('special', $ttl,function(){
+            return Special::query()
+                ->orderBy('id','desc')
+                ->where('status','LIKE',1)
+                ->get();
+        });
 
         return view('Restaurant.index', compact(['chooses', 'menus', 'tags', 'specials']));
     }
