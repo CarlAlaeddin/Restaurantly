@@ -114,8 +114,6 @@
                             <a class="nav-link show" data-bs-toggle="tab" href="#{{ $special->menu_name }}">{{ $special->title }}</a>
                         </li>
                     @endforeach
-
-                    
                 </ul>
             </div>
             <div class="col-lg-9 mt-4 mt-lg-0">
