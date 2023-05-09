@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,10 +30,10 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/user')
         ->controller(UserController::class)
         ->name('user.')
-        ->group(function (){
-           Route::get('/','index')->name('index');
-           Route::get('/show/{user}','show')->name('show');
-           Route::post('/destroy/{user}','destroy')->name('destroy');
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/show/{user}', 'show')->name('show');
+            Route::post('/destroy/{user}', 'destroy')->name('destroy');
         });
 
     #__________________________________________ Contact Form
@@ -40,10 +41,13 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
         ->controller(ContactController::class)
         ->name('contact.')
         ->group(function () {
-            Route::get('/', [ContactController::class, 'index'])->name('index');
+            Route::get('/', 'index')->name('index');
         });
-
-
+    #__________________________________________ Menu
+    Route::prefix('/menu')
+        ->controller(MenuController::class)
+        ->name('menu.')
+        ->group(function () {
+            Route::get('/',  'index')->name('index');
+        });
 });
-
-
