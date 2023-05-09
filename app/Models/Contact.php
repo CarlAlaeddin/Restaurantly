@@ -10,9 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Contact extends Model
 {
-    use HasFactory,
-        Notifiable,
-        Sluggable;
+    use HasFactory, Notifiable, Sluggable;
 
     protected $table = 'contacts';
 

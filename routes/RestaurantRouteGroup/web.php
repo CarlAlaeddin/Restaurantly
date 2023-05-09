@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::prefix('/')
         Route::get('/', 'index')->name('index');
         Route::get('/inner-page', 'inner')->name('index.inner');
     });
+
+Route::post('/contact-form',[ContactController::class,'store'])->name('contact-form');
