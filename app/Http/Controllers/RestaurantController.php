@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chef;
 use App\Models\Choose;
+use App\Models\Contact;
 use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\Menu;
@@ -79,6 +80,12 @@ class RestaurantController extends Controller
                 ->get();
         });
 
+        $contacts = Cache::remember('contact', $ttl, function () {
+            return Contact::query()
+                ->orderBy('id', 'desc')
+                ->where('status', 'LIKE', 1)
+                ->get();
+        });
         return view(
             'Restaurant.index',
             compact([
@@ -88,7 +95,8 @@ class RestaurantController extends Controller
                 'specials',
                 'events',
                 'galleries',
-                'chefs'
+                'chefs',
+                'contacts'
             ])
         );
     }
