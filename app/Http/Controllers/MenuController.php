@@ -12,7 +12,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $menus = Menu::query()->orderBy('id','desc')->paginate(10);
+        return view('Admin.pages.menu.index',compact(['menus']));
     }
 
     /**
