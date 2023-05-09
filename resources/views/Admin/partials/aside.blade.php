@@ -18,7 +18,7 @@
       </a>
       <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="">
+          <a href="{{ route('user.index') }}">
             <i class="fs-5 bi bi-eyeglasses"></i>
             <span>All Users</span>
           </a>

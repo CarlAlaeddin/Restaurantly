@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Profile;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -50,11 +51,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     /**
-     * @return HasOne
+     * Get the profile associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function profile(): HasOne
     {
-        return $this->hasOne(Profile::class,'user_id','id');
+        return $this->hasOne(Profile::class, 'user_id', 'id');
     }
 
 
