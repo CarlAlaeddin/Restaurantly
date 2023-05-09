@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->unsigned()->nullable();
             $table->string('name');
+            $table->string('slug')->nullable();
             $table->string('email');
             $table->string('subject');
             $table->text('message');
