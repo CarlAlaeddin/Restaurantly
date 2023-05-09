@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreContactRequest;
-use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
 use App\Models\User;
 use App\Notifications\ContactNotification;
@@ -50,33 +49,23 @@ class ContactController extends Controller
 
     /**
      * Display the specified resource.
+     * @param Contact $contact
+     * @return Factory|Application|View|\Illuminate\Contracts\Foundation\Application
      */
-    public function show(Contact $contact)
+    public function show(Contact $contact): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        return view('Admin.pages.contact.show',compact(['contact']));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Contact $contact)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateContactRequest $request, Contact $contact)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
+     * @param Contact $contact
+     * @return RedirectResponse
      */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact): RedirectResponse
     {
-        //
+        $contact->delete();
+        return redirect()->route('contact.index')->with('success','The deletion was successful');
     }
 }
