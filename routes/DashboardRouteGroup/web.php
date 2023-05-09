@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('/home/contact')
+    ->controller(ContactController::class)
+    ->name('contact.')
+    ->middleware(['auth','verified'])
+    ->group(function () {
+        Route::get('/', [ContactController::class, 'index'])->name('index');
+    });

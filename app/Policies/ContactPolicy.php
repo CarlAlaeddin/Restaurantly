@@ -13,7 +13,10 @@ class ContactPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        if ($user->profile->role === 1)
+        {
+            dd('ok');
+        }
     }
 
     /**

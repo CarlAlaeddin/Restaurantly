@@ -423,7 +423,7 @@
 
                 <div class="col-lg-8 mt-5 mt-lg-0">
 
-                    <x-form action="{{ route('contact-form') }}" method="post">
+                    <x-form action="{{ route('contact.store') }}" method="post">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <div class="form-group mt-3">

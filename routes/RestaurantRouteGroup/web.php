@@ -22,4 +22,8 @@ Route::prefix('/')
         Route::get('/inner-page', 'inner')->name('index.inner');
     });
 
-Route::post('/contact-form',[ContactController::class,'store'])->name('contact-form');
+
+Route::prefix('contact')->controller(ContactController::class)->name('contact.')->group(function () {
+    Route::post('/store', [ContactController::class, 'store'])->name('store');
+});
+

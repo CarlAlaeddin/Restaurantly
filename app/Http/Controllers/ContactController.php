@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
+use App\Models\Contact;
 use App\Models\User;
 use App\Notifications\ContactNotification;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Notification;
 
@@ -14,19 +17,15 @@ class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @return Factory|Application|View|\Illuminate\Contracts\Foundation\Application
      */
-    public function index()
+    public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        $contacts = Contact::query()->orderBy('id', 'desc')->paginate(10);
+
+        return view('Admin.pages.contact.index', compact(['contacts']));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,19 +34,18 @@ class ContactController extends Controller
      */
     public function store(StoreContactRequest $request): RedirectResponse
     {
-
         $contact = new Contact([
-            'user_id'   =>      auth()->user()->id,
-            'name'      =>      $request->get('name'),
-            'email'     =>      $request->get('email'),
-            'subject'   =>      $request->get('subject'),
-            'message'   =>      $request->get('message')
+            'user_id' => auth()->user()->id,
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'subject' => $request->get('subject'),
+            'message' => $request->get('message')
         ]);
 
-        $user = User::query()->where('id','LIKE',auth()->user()->id)->get();
+        $user = User::query()->where('id', 'LIKE', auth()->user()->id)->get();
         Notification::send($user, new ContactNotification($contact));
         $contact->save();
-        return redirect()->route('index')->with('success','Your comment has been registered correctly, an email has been sent to you');
+        return redirect()->route('index')->with('success', 'Your comment has been registered correctly, an email has been sent to you');
     }
 
     /**
