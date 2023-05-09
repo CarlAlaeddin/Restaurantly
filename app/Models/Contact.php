@@ -7,21 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
-use JetBrains\PhpStorm\ArrayShape;
 
 class Contact extends Model
 {
-    use HasFactory, Notifiable, Sluggable;
-
-    /**
-     * @var string[]
-     */
-    protected $table = ['contacts'];
+    use HasFactory,
+        Notifiable,
+        Sluggable;
 
 
-    /**
-     * @var string[]
-     */
+
+
+
+
     protected $fillable = [
         'user_id',
         'name',
@@ -41,14 +38,17 @@ class Contact extends Model
     }
 
 
+
     /**
-     * @return string[][]
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
      */
-    #[ArrayShape(['slug' => "string[]"])] public function sluggable(): array
+    public function sluggable(): array
     {
         return [
-            'slug'  =>  [
-                'source'    =>  'subject'
+            'slug' => [
+                'source' => 'subject'
             ]
         ];
     }
