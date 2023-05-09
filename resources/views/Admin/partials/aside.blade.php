@@ -58,7 +58,7 @@
       </a>
       <ul id="menu-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="{{ route('contact.index') }}">
+          <a href="{{ route('menu.index') }}">
             <i class="fs-5 bi bi-eyeglasses"></i>
             <span>All Menu</span>
           </a>
