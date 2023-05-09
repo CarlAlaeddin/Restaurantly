@@ -18,11 +18,10 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Subject</th>
-                <th scope="col">Description</th>
-                <th scope="col">Staus</th>
+                <th colspan="3">Message</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
@@ -30,14 +29,27 @@
             @foreach($contacts as $contact)
                 <tr>
                     <th scope="row">{{ $contact->id }}</th>
-                    <td>{{ $contact->user->name }}</td>
                     <td>{{ $contact->user->email }}</td>
                     <td>{{ $contact->subject }}</td>
-                    <td>{{ $contact->description }}</td>
-                    <td>{{ $contact->status }}</td>
-                    <td>
-                        <a href="">show more</a>
-                        <a href="">Delete</a>
+                    <td colspan="3">{{ \Illuminate\Support\Str::limit($contact->message,40) }}</td>
+                    @switch($contact->status)
+                        @case(1)
+                            @php $status = '<i class="btn btn-sm bi bi-eye-slash btn-success"></i>' @endphp
+                        @break
+                        @case(0)
+                            @php $status = '<i class="btn btn-sm bi bi-eye-fill btn-danger"></i>' @endphp
+                        @break
+                    @endswitch
+                    <td class="text-center">{!! $status !!}</td>
+                    <td class="d-flex justify-content-between">
+                        <a href="{{ route('contact.show',$contact->id) }}" class="fs-6 btn btn-sm btn-outline-success">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <x-form action="{{ route('contact.destroy',$contact->id) }}" method="post">
+                            <x-button type="submit" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash-fill"></i>
+                            </x-button>
+                        </x-form>
                     </td>
                 </tr>
             @endforeach

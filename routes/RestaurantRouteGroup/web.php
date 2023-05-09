@@ -23,7 +23,10 @@ Route::prefix('/')
     });
 
 
-Route::prefix('contact')->controller(ContactController::class)->name('contact.')->group(function () {
+Route::prefix('contact')->middleware(['auth','verified'])->controller(ContactController::class)->name('contact.')->group(function () {
     Route::post('/store', [ContactController::class, 'store'])->name('store');
+    Route::get('/show/{contact}', [ContactController::class, 'show'])->name('show');
+    Route::post('/destroy/{contact}', [ContactController::class, 'destroy'])->name('destroy');
+
 });
 

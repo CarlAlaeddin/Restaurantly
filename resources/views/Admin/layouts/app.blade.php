@@ -76,6 +76,7 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('/Dashboard/assets/js/main.js') }}"></script>
 
+    @yield('js-internal')
 </body>
 
 </html>

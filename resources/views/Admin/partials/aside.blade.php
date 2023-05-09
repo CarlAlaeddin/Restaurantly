@@ -32,7 +32,24 @@
       </ul>
     </li><!-- End Components Nav -->
 
-    {{-- <li class="nav-heading">Pages</li> --}}
+      <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#contact-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-person-rolodex"></i>
+              <span>Contact</span>
+              <i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="contact-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                  <a href="{{ route('contact.index') }}">
+                      <i class="fs-5 bi bi-eyeglasses"></i>
+                      <span>All Contact</span>
+                  </a>
+              </li>
+          </ul>
+      </li>
+      <!-- End Components Nav -->
+
+      {{-- <li class="nav-heading">Pages</li> --}}
 
   </ul>
 

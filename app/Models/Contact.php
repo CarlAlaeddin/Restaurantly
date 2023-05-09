@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
+use JetBrains\PhpStorm\ArrayShape;
 
 class Contact extends Model
 {
@@ -40,7 +41,7 @@ class Contact extends Model
      *
      * @return array
      */
-    public function sluggable(): array
+    #[ArrayShape(['slug' => "array[]"])] public function sluggable(): array
     {
         return [
             'slug' => [
