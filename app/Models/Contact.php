@@ -14,9 +14,7 @@ class Contact extends Model
         Notifiable,
         Sluggable;
 
-
-
-
+    protected $table = 'contacts';
 
 
     protected $fillable = [
