@@ -9,10 +9,14 @@ use App\View\Components\Admin\Breadcrumb\Title;
 use App\View\Components\Alert\Error;
 use App\View\Components\Forms\Button;
 use App\View\Components\Forms\Form;
-use App\View\Components\Section\IndexPage\MenuFilter;
+use App\View\Components\Forms\Form\Option;
+use App\View\Components\Forms\Form\Select;
 use App\View\Components\Sections\IndexPage\ChooseBox;
+use App\View\Components\Sections\IndexPage\MenuFilter;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+
+;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('input', Form\Input::class);
         Blade::component('textarea', Form\Textarea::class);
         Blade::component('button', Button::class);
+        Blade::component('option', Option::class);
+        Blade::component('select', Select::class);
         #__________________________________________________ Alerts
         Blade::component('error', Error::class);
         #__________________________________________________ Element
