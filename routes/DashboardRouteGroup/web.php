@@ -49,5 +49,12 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
         ->name('menu.')
         ->group(function () {
             Route::get('/',  'index')->name('index');
+            Route::get('/show/{menu}','show')->name('show');
+            Route::get('/edit/{menu}','edit')->name('edit');
+            Route::post('/destroy/{menu}','destroy')->name('destroy');
+            Route::post('/update/{menu}','update')->name('update');
+
         });
+
+
 });
