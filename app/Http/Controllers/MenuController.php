@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateMenuRequest;
 use App\Models\Menu;
+use App\Models\Tag;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -31,10 +33,28 @@ class MenuController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $image = time() . 'image_box_two' . '.' . $request->file('image')->getClientOriginalExtension();
+        $request->image->move('images/menu', $image);
+
+
+        $menu = new Menu([
+            'name'      =>      $request->get('name'),
+            'price'     =>      $request->get('price'),
+            'status'    =>      $request->get('status'),
+            'image'     =>      $image,
+            'user_id'   =>      auth()->user()->id,
+            'tag_id'    =>      $request->get('tag_id')
+        ]);
+
+        $menu->save();
+        return redirect()->route('menu.index')->with('success','The new menu was registered correctly');
+
+
     }
 
     /**
@@ -54,15 +74,34 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu): \Illuminate\Contracts\Foundation\Application|Factory|View|Application
     {
-        return view('Admin.pages.menu.edit',compact('menu'));
+        $tags = Tag::query()
+            ->orderBy('id','desc')
+            ->where('status','LIKE',1)
+            ->get();
+
+        return view('Admin.pages.menu.edit',compact(['menu','tags']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Menu $menu)
+    public function update(UpdateMenuRequest $request, Menu $menu)
     {
-        //
+        dd($request);
+        $path = 'images/menu'.DIRECTORY_SEPARATOR.$menu->image;
+        if (!is_dir($path) && !empty($request->get('image')))
+        {
+            unlink($path);
+            $image = time() . 'image_box_two' . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->image->move('images/menu', $image);
+            $menu->image = $request->get('image');
+
+        }
+        $menu->tag->tag  =  $request->get('tag');
+        $menu->update($request->all());
+        $menu->tag->save();
+
+
     }
 
     /**
