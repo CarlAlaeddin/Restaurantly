@@ -49,17 +49,16 @@
                         id="image"
                         type="file"
                         placeholder="Enter your image"
-                        value="{{ $menu->name }}"
+                        value="{{ $menu->image }}"
                     />
                 </div>
                 <div class="col-md-6 my-2">
-                    <x-input
-                        name="tag"
-                        id="tag"
-                        type="text"
-                        placeholder="Tag"
-                        value="{{ $menu->tag->tag }}"
-                    />
+                    <x-select name="tag_id" id="tag">
+                        <x-option value="" disabled selected>Select Tag</x-option>
+                        @foreach($tags as $tag)
+                            <x-option value="{{ $tag->id }}">{{ $tag->tag }}</x-option>
+                        @endforeach
+                    </x-select>
                 </div>
                 <div class="col-md-12">
                     <x-button type="submit" class="btn btn-primary">
