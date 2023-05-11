@@ -19,16 +19,19 @@ class MenuController extends Controller
      */
     public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        $menus = Menu::query()->orderBy('id','desc')->paginate(10);
-        return view('Admin.pages.menu.index',compact(['menus']));
+        $menus = Menu::query()->orderBy('id', 'desc')->paginate(10);
+        return view('Admin.pages.menu.index', compact(['menus']));
     }
 
     /**
      * Show the form for creating a new resource.
+     * @return Factory|Application|View|\Illuminate\Contracts\Foundation\Application
      */
-    public function create()
+    public function create(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        $tags = Tag::query()->orderBy('id', 'desc')->where('status', 'LIKE', 1)->get();
+
+        return view('Admin.pages.menu.create', compact('tags'));
     }
 
     /**
@@ -38,23 +41,21 @@ class MenuController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $image = time() . 'image_box_two' . '.' . $request->file('image')->getClientOriginalExtension();
+        $image = time() . '-image-food' . '.' . $request->file('image')->getClientOriginalExtension();
         $request->image->move('images/menu', $image);
 
 
         $menu = new Menu([
-            'name'      =>      $request->get('name'),
-            'price'     =>      $request->get('price'),
-            'status'    =>      $request->get('status'),
-            'image'     =>      $image,
-            'user_id'   =>      auth()->user()->id,
-            'tag_id'    =>      $request->get('tag_id')
+            'name' => $request->get('name'),
+            'price' => $request->get('price'),
+            'status' => $request->get('status'),
+            'image' => $image,
+            'user_id' => auth()->user()->id,
+            'tag_id' => $request->get('tag_id')
         ]);
 
         $menu->save();
-        return redirect()->route('menu.index')->with('success','The new menu was registered correctly');
-
-
+        return redirect()->route('menu.index')->with('success', 'The new menu was registered correctly');
     }
 
     /**
@@ -64,7 +65,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        return view('Admin.pages.menu.show',compact(['menu']));
+        return view('Admin.pages.menu.show', compact(['menu']));
     }
 
     /**
@@ -75,33 +76,35 @@ class MenuController extends Controller
     public function edit(Menu $menu): \Illuminate\Contracts\Foundation\Application|Factory|View|Application
     {
         $tags = Tag::query()
-            ->orderBy('id','desc')
-            ->where('status','LIKE',1)
+            ->orderBy('id', 'desc')
+            ->where('status', 'LIKE', 1)
             ->get();
 
-        return view('Admin.pages.menu.edit',compact(['menu','tags']));
+        return view('Admin.pages.menu.edit', compact(['menu', 'tags']));
     }
 
     /**
      * Update the specified resource in storage.
+     * @param UpdateMenuRequest $request
+     * @param Menu $menu
+     * @return RedirectResponse
      */
-    public function update(UpdateMenuRequest $request, Menu $menu)
+    public function update(UpdateMenuRequest $request, Menu $menu): RedirectResponse
     {
-        dd($request);
-        $path = 'images/menu'.DIRECTORY_SEPARATOR.$menu->image;
-        if (!is_dir($path) && !empty($request->get('image')))
-        {
-            unlink($path);
-            $image = time() . 'image_box_two' . '.' . $request->file('image')->getClientOriginalExtension();
+        if (!is_null($request->file('image'))) {
+            $image = time() . '-image-food' . '.' . $request->file('image')->getClientOriginalExtension();
             $request->image->move('images/menu', $image);
-            $menu->image = $request->get('image');
-
+            $menu->image = $image;
         }
-        $menu->tag->tag  =  $request->get('tag');
-        $menu->update($request->all());
-        $menu->tag->save();
 
+        $menu->name = $request->get('name');
+        $menu->price = $request->get('price');
+        $menu->status = $request->get('status');
+        $menu->tag_id   =   $request->get('tag_id');
+        $menu->slug = null;
 
+        $menu->update();
+        return redirect()->route('menu.index')->with('success','Your menu has been successfully edited');
     }
 
     /**
@@ -112,6 +115,6 @@ class MenuController extends Controller
     public function destroy(Menu $menu): RedirectResponse
     {
         $menu->delete();
-        return redirect()->route('menu.index')->with('success','The menu was successfully deleted');
+        return redirect()->route('menu.index')->with('success', 'The menu was successfully deleted');
     }
 }
