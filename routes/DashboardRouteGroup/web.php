@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -58,5 +59,16 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
 
         });
 
-
+    #___________________________________________ Tags
+    Route::prefix('/tags')
+        ->controller(TagController::class)
+        ->name('tag.')
+        ->group(function (){
+            Route::get('/',  'index')->name('index');
+            Route::get('/create',  'create')->name('create');
+            Route::get('/edit/{tag}','edit')->name('edit');
+            Route::post('/destroy/{tag}','destroy')->name('destroy');
+            Route::post('/update/{tag}','update')->name('update');
+            Route::post('/store','store')->name('store');
+        });
 });
