@@ -16,7 +16,7 @@
 
 @section('content')
         <div class="col-md-4">
-            <img src="{{ $menu->image }}" alt="" class="img-fluid img-thumbnail">
+            <img src="{{ asset('/images/menu'.DIRECTORY_SEPARATOR. $menu->image) }}" alt="" class="img-fluid img-thumbnail">
         </div>
         <div class="col-md-8">
             <div class="card">
