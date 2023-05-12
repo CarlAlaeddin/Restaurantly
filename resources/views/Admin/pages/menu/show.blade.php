@@ -34,6 +34,17 @@
                     @endswitch
                     <div class="card-text my-3"><span class="fw-bold">Status: </span>{!! $status !!}</div>
                     <div class="card-text my-3"><span class="fw-bold">Tag: </span>{{ $menu->tag->tag }}</div>
+                    <div class="card-text my-3">
+                        <span class="fw-bold">
+                            Categories:
+                        </span>
+                        @foreach($menu->categories as $category)
+                            <span class="mx-2">
+                                <i class="bi bi-bookmark-fill"></i>
+                                {{ $category->name }}
+                            </span>
+                        @endforeach
+                    </div>
                     <div class="card-text my-3"><span class="fw-bold">create by user : </span>{{ $menu->user->name }}</div>
                     <div class="d-flex">
                         <x-form action="{{ route('menu.destroy',$menu->id) }}" method="post">
