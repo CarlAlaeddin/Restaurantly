@@ -19,8 +19,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">slug</th>
-                <th scope="col">tag</th>
+                <th scope="col">Slug</th>
+                <th scope="col">Category</th>
+                <th scope="col">Tag</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
             </tr>
@@ -31,6 +32,13 @@
                     <th scope="row">{{ $menu->id }}</th>
                     <td>{{ $menu->name }}</td>
                     <td>{{ $menu->slug }}</td>
+                    <td>
+                        @foreach($menu->categories as $category)
+                            <span class="mx-2">
+                                {{ $category->name }}
+                            </span>
+                        @endforeach
+                    </td>
                     <td> {{ $menu->tag->tag }}</td>
                     @switch($menu->status)
                         @case(1)
