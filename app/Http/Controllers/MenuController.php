@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateMenuRequest;
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Tag;
 use Illuminate\Contracts\View\Factory;
@@ -20,6 +21,7 @@ class MenuController extends Controller
     public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
         $menus = Menu::query()->orderBy('id', 'desc')->paginate(10);
+//        dd($menus->categories());
         return view('Admin.pages.menu.index', compact(['menus']));
     }
 
@@ -30,8 +32,8 @@ class MenuController extends Controller
     public function create(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
         $tags = Tag::query()->orderBy('id', 'desc')->where('status', 'LIKE', 1)->get();
-
-        return view('Admin.pages.menu.create', compact('tags'));
+        $categories = Category::query()->orderBy('id', 'desc')->where('status', 'LIKE', 1)->get();
+        return view('Admin.pages.menu.create', compact(['tags', 'categories']));
     }
 
     /**
@@ -42,8 +44,6 @@ class MenuController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $image = time() . '-image-food' . '.' . $request->file('image')->getClientOriginalExtension();
-        $request->image->move('images/menu', $image);
-
 
         $menu = new Menu([
             'name' => $request->get('name'),
@@ -51,10 +51,11 @@ class MenuController extends Controller
             'status' => $request->get('status'),
             'image' => $image,
             'user_id' => auth()->user()->id,
-            'tag_id' => $request->get('tag_id')
+            'tag_id' => $request->get('tag_id'),
         ]);
 
         $menu->save();
+        $request->image->move('images/menu', $image);
         return redirect()->route('menu.index')->with('success', 'The new menu was registered correctly');
     }
 
@@ -80,7 +81,12 @@ class MenuController extends Controller
             ->where('status', 'LIKE', 1)
             ->get();
 
-        return view('Admin.pages.menu.edit', compact(['menu', 'tags']));
+        $categories = Category::query()
+            ->orderBy('id', 'desc')
+            ->where('status', 'LIKE', 1)
+            ->get();
+
+        return view('Admin.pages.menu.edit', compact(['menu', 'tags', 'categories']));
     }
 
     /**
@@ -100,11 +106,13 @@ class MenuController extends Controller
         $menu->name = $request->get('name');
         $menu->price = $request->get('price');
         $menu->status = $request->get('status');
-        $menu->tag_id   =   $request->get('tag_id');
+        $menu->tag_id = $request->get('tag_id');
         $menu->slug = null;
 
+        $menu->categories()->sync($request->get('category'), $menu->id);
+
         $menu->update();
-        return redirect()->route('menu.index')->with('success','Your menu has been successfully edited');
+        return redirect()->route('menu.index')->with('success', 'Your menu has been successfully edited');
     }
 
     /**
@@ -117,4 +125,5 @@ class MenuController extends Controller
         $menu->delete();
         return redirect()->route('menu.index')->with('success', 'The menu was successfully deleted');
     }
+
 }
