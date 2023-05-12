@@ -55,7 +55,7 @@
                     <x-select name="tag_id" id="tag">
                         <x-option value="" disabled selected>Select Tag</x-option>
                         @foreach($tags as $tag)
-                            <x-option value="{{ $tag->tag }}">{{ $tag->tag }}</x-option>
+                            <x-option value="{{ $tag->id }}">{{ $tag->tag }}</x-option>
                         @endforeach
                     </x-select>
                 </div>
