@@ -60,6 +60,16 @@
                         @endforeach
                     </x-select>
                 </div>
+                <div class="col-md-6 my-2">
+                    <x-select name="category[]" id="category" multiple="">
+                    <x-option value="" disabled selected>Select Categories</x-option>
+                    @foreach($categories as $category)
+                        <span class="mx-2">
+                                <x-option value="{{ $category->id }}">{{ $category->name }}</x-option>
+                            </span>
+                    @endforeach
+                </x-select>
+                </div>
                 <div class="col-md-12">
                     <x-button type="submit" class="btn btn-primary">
                         Submit
