@@ -68,4 +68,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Contact::class);
     }
+
+    /**
+     * @return HasOne
+     */
+    public function chef(): HasOne
+    {
+        return $this->hasOne(Chef::class);
+    }
 }
