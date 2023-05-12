@@ -8,7 +8,7 @@
         <x-nav>
             <x-nav-item href="{{ route('home') }}">Dashboard</x-nav-item>
             <x-nav-item href="{{ route('category.index') }}">Categories</x-nav-item>
-            <x-nav-item href="{{ route('category.create') }}">Create</x-nav-item>
+            <x-nav-item href="{{ route('category.create') }}">Create\</x-nav-item>
         </x-nav>
     </x-breadcrumb>
 @endsection
