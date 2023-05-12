@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChefController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TagController;
@@ -85,6 +86,21 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
             Route::post('/destroy/{category}','destroy')->name('destroy');
             Route::post('/update/{category}','update')->name('update');
             Route::post('/store','store')->name('store');
+        });
+
+    #___________________________________________ Chef
+    Route::prefix('/chef')
+        ->controller(ChefController::class)
+        ->name('chef.')
+        ->group(function () {
+            Route::get('/',  'index')->name('index');
+            Route::get('/create',  'create')->name('create');
+            Route::get('/show/{chef}','show')->name('show');
+            Route::get('/edit/{chef}','edit')->name('edit');
+            Route::post('/destroy/{chef}','destroy')->name('destroy');
+            Route::post('/update/{chef}','update')->name('update');
+            Route::post('/store','store')->name('store');
+
         });
 
 });
