@@ -95,6 +95,29 @@
             </ul>
         </li>
 
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bookmark-fill"></i>
+                <span>Category</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="category-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('category.create') }}">
+                        <i class="fs-5 bi bi-plus"></i>
+                        <span>New Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('category.index') }}">
+                        <i class="fs-5 bi bi-eyeglasses"></i>
+                        <span>All Category</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- End Components Nav -->
         {{-- <li class="nav-heading">Pages</li> --}}
 
     </ul>
