@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TagController;
@@ -71,4 +72,19 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
             Route::post('/update/{tag}','update')->name('update');
             Route::post('/store','store')->name('store');
         });
+
+    #___________________________________________ Category
+
+    Route::prefix('/categories')
+        ->controller(CategoryController::class)
+        ->name('category.')
+        ->group(function (){
+            Route::get('/',  'index')->name('index');
+            Route::get('/create',  'create')->name('create');
+            Route::get('/edit/{category}','edit')->name('edit');
+            Route::post('/destroy/{category}','destroy')->name('destroy');
+            Route::post('/update/{category}','update')->name('update');
+            Route::post('/store','store')->name('store');
+        });
+
 });
