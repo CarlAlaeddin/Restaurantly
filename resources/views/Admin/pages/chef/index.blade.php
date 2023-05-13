@@ -19,6 +19,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
+                <th scope="col">Create By</th>
                 <th scope="col">Position</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
@@ -28,6 +29,7 @@
             @foreach($chefs as $chef)
                 <tr>
                     <th scope="row">{{ $chef->id }}</th>
+                    <td>{{ $chef->name }}</td>
                     <td>{{ $chef->user->name }}</td>
                     @switch($chef->position)
                         @case(1)
