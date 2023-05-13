@@ -130,12 +130,12 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" data-bs-target="#gallery-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-images"></i>
                 <span>Gallery</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="category-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="gallery-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('gallery.create') }}">
                         <i class="fs-5 bi bi-plus"></i>
