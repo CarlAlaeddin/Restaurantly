@@ -171,6 +171,28 @@
                 </li>
             </ul>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#choose-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-check2-square"></i>
+                <span>Choose</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="choose-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('choose.create') }}">
+                        <i class="fs-5 bi bi-plus"></i>
+                        <span>New choose</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('choose.index') }}">
+                        <i class="fs-5 bi bi-eyeglasses"></i>
+                        <span>All chooses</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <!-- End Components Nav -->
         {{-- <li class="nav-heading">Pages</li> --}}
 
