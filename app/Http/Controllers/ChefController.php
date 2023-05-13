@@ -25,10 +25,11 @@ class ChefController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     * @return Factory|Application|View|\Illuminate\Contracts\Foundation\Application
      */
-    public function create()
+    public function create(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        return view('Admin.pages.chef.create');
     }
 
     /**
@@ -53,7 +54,7 @@ class ChefController extends Controller
         ]);
 
         $request->image->move('images/chef', $image);
-
+        $chef->save();
         return redirect()->route('chef.index')->with('success', 'The new menu was registered correctly');
     }
 
@@ -79,8 +80,11 @@ class ChefController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param UpdateChefRequest $request
+     * @param Chef $chef
+     * @return RedirectResponse
      */
-    public function update(UpdateChefRequest $request, Chef $chef)
+    public function update(UpdateChefRequest $request, Chef $chef): RedirectResponse
     {
         if (!is_null($request->file('image'))) {
             $image = time() . '-chef' . '.' . $request->file('image')->getClientOriginalExtension();
@@ -95,7 +99,6 @@ class ChefController extends Controller
         $chef->linkedin     =       $request->get('linkedin');
         $chef->status       =       $request->get('status');
         $chef->position     =       $request->get('position');
-        $chef->image        =       $image;
         $chef->user_id      =       auth()->user()->id;
         $chef->slug         =       null;
 
@@ -106,9 +109,12 @@ class ChefController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @param Chef $chef
+     * @return RedirectResponse
      */
-    public function destroy(Chef $chef)
+    public function destroy(Chef $chef): RedirectResponse
     {
-        //
+        $chef->delete();
+        return redirect()->route('chef.index')->with('success', 'Your chef has been successfully edited');
     }
 }
