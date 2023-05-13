@@ -24,9 +24,21 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('chef.index') }}">
+                        <i class="fs-5 bi bi-eyeglasses"></i>
+                        <span>All Chefs</span>
+                    </a>
+                </li>
+                <li>
                     <a href="">
                         <i class="fs-5 bi bi-person-plus-fill"></i>
                         <span>New User</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('chef.create') }}">
+                        <i class="fs-5 bi bi-person-plus-fill"></i>
+                        <span>New Chef</span>
                     </a>
                 </li>
             </ul>
