@@ -21,8 +21,8 @@
 
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                        <img src="{{ $chef->image }}" alt="Profile" class="rounded img-fluid">
-                        <h4 class="mt-3">{{ $chef->user->name }}</h4>
+                        <img src="{{ asset('/images/chef/'.$chef->image) }}" alt="Profile" class="rounded img-fluid">
+                        <h4 class="mt-3">{{ $chef->name }}</h4>
                         <div class="social-links mt-2">
                             <a href="{{ $chef->twitter }}" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="{{ $chef->facebook }}" class="facebook"><i class="bi bi-facebook"></i></a>
