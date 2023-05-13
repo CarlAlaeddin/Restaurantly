@@ -11,6 +11,15 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('profile.index') }}">
+                <i class="bi bi-person-square"></i>
+                <span>Profile</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+        </li>
+        <!-- End Components Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-people-fill"></i>
                 <span>User Management</span>
