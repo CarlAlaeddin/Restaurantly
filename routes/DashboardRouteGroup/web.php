@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChefController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -27,7 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
-
     #__________________________________________ Users
 
     Route::prefix('/user')
@@ -51,27 +51,26 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
         ->controller(MenuController::class)
         ->name('menu.')
         ->group(function () {
-            Route::get('/',  'index')->name('index');
-            Route::get('/create',  'create')->name('create');
-            Route::get('/show/{menu}','show')->name('show');
-            Route::get('/edit/{menu}','edit')->name('edit');
-            Route::post('/destroy/{menu}','destroy')->name('destroy');
-            Route::post('/update/{menu}','update')->name('update');
-            Route::post('/store','store')->name('store');
-
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/show/{menu}', 'show')->name('show');
+            Route::get('/edit/{menu}', 'edit')->name('edit');
+            Route::post('/destroy/{menu}', 'destroy')->name('destroy');
+            Route::post('/update/{menu}', 'update')->name('update');
+            Route::post('/store', 'store')->name('store');
         });
 
     #___________________________________________ Tags
     Route::prefix('/tags')
         ->controller(TagController::class)
         ->name('tag.')
-        ->group(function (){
-            Route::get('/',  'index')->name('index');
-            Route::get('/create',  'create')->name('create');
-            Route::get('/edit/{tag}','edit')->name('edit');
-            Route::post('/destroy/{tag}','destroy')->name('destroy');
-            Route::post('/update/{tag}','update')->name('update');
-            Route::post('/store','store')->name('store');
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/edit/{tag}', 'edit')->name('edit');
+            Route::post('/destroy/{tag}', 'destroy')->name('destroy');
+            Route::post('/update/{tag}', 'update')->name('update');
+            Route::post('/store', 'store')->name('store');
         });
 
     #___________________________________________ Category
@@ -79,13 +78,13 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/categories')
         ->controller(CategoryController::class)
         ->name('category.')
-        ->group(function (){
-            Route::get('/',  'index')->name('index');
-            Route::get('/create',  'create')->name('create');
-            Route::get('/edit/{category}','edit')->name('edit');
-            Route::post('/destroy/{category}','destroy')->name('destroy');
-            Route::post('/update/{category}','update')->name('update');
-            Route::post('/store','store')->name('store');
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/edit/{category}', 'edit')->name('edit');
+            Route::post('/destroy/{category}', 'destroy')->name('destroy');
+            Route::post('/update/{category}', 'update')->name('update');
+            Route::post('/store', 'store')->name('store');
         });
 
     #___________________________________________ Chef
@@ -93,14 +92,26 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
         ->controller(ChefController::class)
         ->name('chef.')
         ->group(function () {
-            Route::get('/',  'index')->name('index');
-            Route::get('/create',  'create')->name('create');
-            Route::get('/show/{chef}','show')->name('show');
-            Route::get('/edit/{chef}','edit')->name('edit');
-            Route::post('/destroy/{chef}','destroy')->name('destroy');
-            Route::post('/update/{chef}','update')->name('update');
-            Route::post('/store','store')->name('store');
-
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/show/{chef}', 'show')->name('show');
+            Route::get('/edit/{chef}', 'edit')->name('edit');
+            Route::post('/destroy/{chef}', 'destroy')->name('destroy');
+            Route::post('/update/{chef}', 'update')->name('update');
+            Route::post('/store', 'store')->name('store');
         });
 
+    #___________________________________________ Gallery
+    Route::prefix('/gallery')
+        ->controller(GalleryController::class)
+        ->name('gallery.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/show/{gallery}', 'show')->name('show');
+            Route::get('/edit/{gallery}', 'edit')->name('edit');
+            Route::post('/destroy/{gallery}', 'destroy')->name('destroy');
+            Route::post('/update/{gallery}', 'update')->name('update');
+            Route::post('/store', 'store')->name('store');
+        });
 });
