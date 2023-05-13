@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -32,7 +33,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
     #__________________________________________ Users
-
     Route::prefix('/user')
         ->controller(UserController::class)
         ->name('user.')
@@ -40,6 +40,20 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
             Route::get('/'                  , 'index')      ->name('index');
             Route::get('/show/{user}'       , 'show')       ->name('show');
             Route::post('/destroy/{user}'   , 'destroy')    ->name('destroy');
+        });
+
+    #__________________________________________ Users
+    Route::prefix('/profile')
+        ->controller(ProfileController::class)
+        ->name('profile.')
+        ->group(function () {
+            Route::get('/'                   , 'index')      ->name('index');
+            Route::get('/create'             , 'create')     ->name('create');
+            Route::get('/show/{profile}'     , 'show')       ->name('show');
+            Route::get('/edit/{profile}'     , 'edit')       ->name('edit');
+            Route::post('/destroy/{profile}' , 'destroy')    ->name('destroy');
+            Route::post('/update/{profile}'  , 'update')     ->name('update');
+            Route::post('/store'             , 'store')      ->name('store');
         });
 
     #__________________________________________ Contact Form
