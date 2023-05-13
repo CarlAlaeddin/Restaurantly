@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChefController;
+use App\Http\Controllers\ChooseController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
@@ -116,7 +117,7 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
             Route::post('/store'            , 'store')      ->name('store');
         });
 
-    #___________________________________________ Gallery
+    #___________________________________________ Event
     Route::prefix('/event')
         ->controller(EventController::class)
         ->name('event.')
@@ -128,6 +129,20 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
             Route::post('/destroy/{event}'  , 'destroy')    ->name('destroy');
             Route::post('/update/{event}'   , 'update')     ->name('update');
             Route::post('/store'            , 'store')      ->name('store');
+        });
+
+    #___________________________________________ Choose
+    Route::prefix('/choose')
+        ->controller(ChooseController::class)
+        ->name('choose.')
+        ->group(function () {
+            Route::get('/'                   , 'index')      ->name('index');
+            Route::get('/create'             , 'create')     ->name('create');
+            Route::get('/show/{choose}'      , 'show')       ->name('show');
+            Route::get('/edit/{choose}'      , 'edit')       ->name('edit');
+            Route::post('/destroy/{choose}'  , 'destroy')    ->name('destroy');
+            Route::post('/update/{choose}'   , 'update')     ->name('update');
+            Route::post('/store'             , 'store')      ->name('store');
         });
 
 });
