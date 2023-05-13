@@ -18,26 +18,20 @@
         <x-form method="POST" action="{{ route('chef.store') }}" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
-                    <x-input
-                        name="name"
-                        id="name"
-                        type="text"
-                        placeholder="Enter your name"
-                        value="{{ old('name') }}"
-                    />
+                    <x-input name="name" id="name" type="text" placeholder="Enter your name" value="{{ old('name') }}" />
                 </div>
 
                 <div class="col-md-6">
-                    <x-input name="twitter" id="twitter" type="text" placeholder="Address : https:// ... " value="{{ old('twitter') }}"/>
+                    <x-input name="twitter" id="twitter" type="text" placeholder="twitter : https:// ... " value="{{ old('twitter') }}"/>
                 </div>
                 <div class="col-md-6 my-2">
-                    <x-input name="facebook" id="facebook" type="text" placeholder="Address : https:// ... " value="{{ old('facebook') }}"/>
+                    <x-input name="facebook" id="facebook" type="text" placeholder="facebook : https:// ... " value="{{ old('facebook') }}"/>
                 </div>
                 <div class="col-md-6 my-2">
-                    <x-input name="instagram" id="instagram" type="text" placeholder="Address : https:// ... " value="{{ old('instagram') }}"/>
+                    <x-input name="instagram" id="instagram" type="text" placeholder="instagram : https:// ... " value="{{ old('instagram') }}"/>
                 </div>
                 <div class="col-md-6 my-2">
-                    <x-input name="linkedin" id="linkedin" type="text" placeholder="Address : https:// ... " value="{{ old('linkedin') }}"/>
+                    <x-input name="linkedin" id="linkedin" type="text" placeholder="linkedin : https:// ... " value="{{ old('linkedin') }}"/>
                 </div>
 
                 <div class="col-md-6 my-2">
