@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -142,6 +143,20 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
             Route::get('/edit/{choose}'      , 'edit')       ->name('edit');
             Route::post('/destroy/{choose}'  , 'destroy')    ->name('destroy');
             Route::post('/update/{choose}'   , 'update')     ->name('update');
+            Route::post('/store'             , 'store')      ->name('store');
+        });
+
+    #___________________________________________ Special
+    Route::prefix('/special')
+        ->controller(SpecialController::class)
+        ->name('special.')
+        ->group(function () {
+            Route::get('/'                   , 'index')      ->name('index');
+            Route::get('/create'             , 'create')     ->name('create');
+            Route::get('/show/{special}'     , 'show')       ->name('show');
+            Route::get('/edit/{special}'     , 'edit')       ->name('edit');
+            Route::post('/destroy/{special}' , 'destroy')    ->name('destroy');
+            Route::post('/update/{special}'  , 'update')     ->name('update');
             Route::post('/store'             , 'store')      ->name('store');
         });
 

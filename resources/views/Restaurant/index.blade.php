@@ -112,7 +112,7 @@
                     <ul class="nav nav-tabs flex-column">
                         @foreach ($specials as $special)
                             <li class="nav-item">
-                                <a class="nav-link show" data-bs-toggle="tab" href="#{{ $special->menu_name }}">{{
+                                <a class="nav-link show" data-bs-toggle="tab" href="#{{ $special->slug }}">{{
                             $special->title }}</a>
                             </li>
                         @endforeach
@@ -121,15 +121,14 @@
                 <div class="col-lg-9 mt-4 mt-lg-0">
                     <div class="tab-content">
                         @foreach ($specials as $special)
-                            <div @class(['tab-pane', 'show'=> false, 'active' => false]) id="{{ $special->menu_name }}">
+                            <div @class(['tab-pane', 'show'=> false, 'active' => false]) id="{{ $special->slug }}">
                                 <div class="row">
                                     <div class="col-lg-8 details order-2 order-lg-1">
                                         <h3>{{ $special->title }}</h3>
                                         <p class="fst-italic">{{ $special->description }}</p>
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="{{ $special->image }}" alt="image food {{ $special->title }}"
-                                             class="img-fluid rounded">
+                                        <img src="{{ asset('/images/special/'.$special->image ) }}" alt="image food {{ $special->title }}" class="img-fluid rounded">
                                     </div>
                                 </div>
                             </div>

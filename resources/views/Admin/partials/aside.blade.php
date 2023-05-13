@@ -173,22 +173,22 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#choose-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-check2-square"></i>
-                <span>Choose</span>
+            <a class="nav-link collapsed" data-bs-target="#special-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-up"></i>
+                <span>Special Menu</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="choose-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="special-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('choose.create') }}">
+                    <a href="{{ route('special.create') }}">
                         <i class="fs-5 bi bi-plus"></i>
-                        <span>New choose</span>
+                        <span>New Item</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('choose.index') }}">
+                    <a href="{{ route('special.index') }}">
                         <i class="fs-5 bi bi-eyeglasses"></i>
-                        <span>All chooses</span>
+                        <span>All Special menu</span>
                     </a>
                 </li>
             </ul>

@@ -48,7 +48,7 @@ class Special extends Model
     /**
      * Get the user that owns the special
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user(): BelongsTo
     {
