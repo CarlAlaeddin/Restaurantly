@@ -15,7 +15,7 @@
 
 @section('content')
     <div class="col-lg-12 my-2 p-5 border rounded bg-white">
-        <x-form method="POST" action="{{ route('chef.update', $chef->id) }}" enctype="multipart/form-data">
+        <x-form method="POST" action="{{ route('chef.store') }}" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
                     <x-input
@@ -23,7 +23,7 @@
                         id="name"
                         type="text"
                         placeholder="Enter your name"
-                        value="{{ $chef->name }}"
+                        value="{{ old('name') }}"
                     />
                 </div>
 
