@@ -53,7 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get the profile associated with the User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
     public function profile(): HasOne
     {
@@ -75,5 +75,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function chef(): HasOne
     {
         return $this->hasOne(Chef::class);
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function gallery(): HasOne
+    {
+        return $this->hasOne(Gallery::class);
     }
 }
