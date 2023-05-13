@@ -150,6 +150,27 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#event-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-calendar-event"></i>
+                <span>Event</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="event-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('event.create') }}">
+                        <i class="fs-5 bi bi-plus"></i>
+                        <span>New event</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('event.index') }}">
+                        <i class="fs-5 bi bi-eyeglasses"></i>
+                        <span>All events</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <!-- End Components Nav -->
         {{-- <li class="nav-heading">Pages</li> --}}
 
