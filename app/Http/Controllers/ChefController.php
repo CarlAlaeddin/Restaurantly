@@ -87,6 +87,7 @@ class ChefController extends Controller
     public function update(UpdateChefRequest $request, Chef $chef): RedirectResponse
     {
         if (!is_null($request->file('image'))) {
+            unlink('images/chef/'.$chef->image);
             $image = time() . '-chef' . '.' . $request->file('image')->getClientOriginalExtension();
             $request->image->move('images/chef', $image);
             $chef->image = $image;
