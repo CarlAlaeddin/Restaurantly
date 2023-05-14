@@ -8,7 +8,8 @@
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li>
+        <!-- End Dashboard Nav -->
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('profile.index') }}">
@@ -18,8 +19,30 @@
         </li>
         <!-- End Components Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#chef" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-person-dash"></i>
+                <span>Chef</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="chef" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('reserve.create') }}">
+                        <i class="fs-5 bi bi-plus"></i>
+                        <span>New Reserve</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('reserve.index') }}">
+                        <i class="fs-5 bi bi-eyeglasses"></i>
+                        <span>All Reserve</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <!-- End Components Nav -->
 
+        <!-- End Components Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#contact-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-person-rolodex"></i>
@@ -104,7 +127,7 @@
                 </li>
             </ul>
         </li>
-
+        <!-- End Components Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
@@ -127,6 +150,8 @@
                 </li>
             </ul>
         </li>
+        <!-- End Components Nav -->
+
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#gallery-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-images"></i>
@@ -148,6 +173,8 @@
                 </li>
             </ul>
         </li>
+        <!-- End Components Nav -->
+
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#event-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-calendar-event"></i>
@@ -169,6 +196,7 @@
                 </li>
             </ul>
         </li>
+        <!-- End Components Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#special-nav" data-bs-toggle="collapse" href="#">
@@ -192,7 +220,6 @@
             </ul>
         </li>
         <!-- End Components Nav -->
-        {{-- <li class="nav-heading">Pages</li> --}}
 
     </ul>
 

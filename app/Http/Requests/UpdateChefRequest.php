@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class UpdateChefRequest extends FormRequest
 {
@@ -11,18 +12,41 @@ class UpdateChefRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if (auth()->check() && auth()->user()->profile->role === 1)
+        {
+            return true;
+        }
+        return abort(403);
+
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array
      */
+    #[ArrayShape([
+            'name'           =>      "string[]",
+            'twitter'        =>      "string[]",
+            'facebook'       =>      "string[]",
+            'instagram'      =>      "string[]",
+            'linkedin'       =>      "string[]",
+            'status'         =>      "string[]",
+            'position'       =>      "string[]",
+            'image'          =>      "string[]"
+        ]
+    )]
     public function rules(): array
     {
         return [
-            //
+            'name'          =>      ['required','alpha:ascii','min:5','max:50'],
+            'twitter'       =>      ['required','url'],
+            'facebook'      =>      ['required','url'],
+            'instagram'     =>      ['required','url'],
+            'linkedin'      =>      ['required','url'],
+            'status'        =>      ['required','numeric'],
+            'position'      =>      ['required','numeric'],
+            'image'         =>      ['required','mimes:jpg,bmp,png'],
         ];
     }
 }
