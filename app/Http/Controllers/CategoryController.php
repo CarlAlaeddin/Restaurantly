@@ -33,8 +33,10 @@ class CategoryController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @param StoreCategoryRequest $request
+     * @return RedirectResponse
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(StoreCategoryRequest $request): RedirectResponse
     {
         $category = new Category([
            'name'   =>  $request->get('name'),
