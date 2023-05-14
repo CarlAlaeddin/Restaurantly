@@ -61,6 +61,29 @@
         <!-- End Components Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#reserve-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-life-preserver"></i>
+                <span>Reserve</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="reserve-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('reserve.create') }}">
+                        <i class="fs-5 bi bi-plus"></i>
+                        <span>New Reserve</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('reserve.index') }}">
+                        <i class="fs-5 bi bi-eyeglasses"></i>
+                        <span>All Reserve</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- End Components Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tag-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-tags"></i>
                 <span>Tags</span>
