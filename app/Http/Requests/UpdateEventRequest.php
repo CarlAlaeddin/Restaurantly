@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class UpdateEventRequest extends FormRequest
 {
@@ -11,18 +12,34 @@ class UpdateEventRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if (auth()->check() && auth()->user()->profile->role === 1)
+        {
+            return true;
+        }
+        return abort(403);
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array
      */
+    #[ArrayShape([
+            'image'     =>      "string[]",
+            'title'     =>      "string[]",
+            'price'     =>      "string[]",
+            'body'      =>      "string[]",
+            'status'    =>      "string[]"
+        ]
+    )]
     public function rules(): array
     {
         return [
-            //
+            'image'     =>     ['required','mimes:jpg,bmp,png'],
+            'title'     =>     ['required','min:10','max:30'],
+            'price'     =>     ['required','numeric'],
+            'body'      =>     ['required','min:50','max:1000'],
+            'status'    =>     ['required','numeric'],
         ];
     }
 }
