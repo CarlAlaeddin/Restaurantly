@@ -52,9 +52,15 @@
                                         {{ $reserve->people }}
                                     </span>
                                 </li>
+                                @if(auth()->check() && auth()->user()->profile->role === 1)
+                                    <li class="list-group-item">
+                                        <form action="{{ route('reserve.destroy',$reserve->id) }}">
+                                            <button class="btn btn-md btn-outline-danger">Delete</button>
+                                        </form>
+                                    </li>
+                                @endif
                             </ul>
                             <!-- End Clean list group -->
-
                         </div>
                     </div>
                 </div>
