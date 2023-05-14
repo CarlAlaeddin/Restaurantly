@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreChooseRequest;
 use App\Models\Choose;
 use App\Models\User;
 use Illuminate\Contracts\View\Factory;
@@ -33,10 +34,10 @@ class ChooseController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param StoreChooseRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreChooseRequest $request): RedirectResponse
     {
         $choose = new Choose([
             'user_id'       =>      auth()->user()->id,
@@ -71,8 +72,11 @@ class ChooseController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param StoreChooseRequest $request
+     * @param Choose $choose
+     * @return RedirectResponse
      */
-    public function update(Request $request, Choose $choose)
+    public function update(StoreChooseRequest $request, Choose $choose): RedirectResponse
     {
         $choose->user_id = auth()->user()->id;
         $choose->update($request->all());

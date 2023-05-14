@@ -19,6 +19,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <x-input name="title" id="title" type="text" placeholder="Enter your title" value="{{ old('title') }}" />
+                    @error('title')
+                        <span>{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="col-md-6">
@@ -27,10 +30,16 @@
                         <x-option value="1">Active</x-option>
                         <x-option value="0">DeActive</x-option>
                     </x-select>
+                    @error('status')
+                        <span>{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="col-md-12 my-2">
                     <x-textarea name="description" placeholder="description">{{old('description')}}</x-textarea>
+                    @error('description')
+                        <span>{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="col-md-12">
