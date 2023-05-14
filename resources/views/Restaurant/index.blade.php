@@ -188,66 +188,64 @@
                 <p>Book a Table</p>
             </div>
             {{-- start form book a table for ReservationTables --}}
-            <x-form action="" method="POST">
+            <x-form action="{{ route('reserve.store') }}" method="POST">
                 <div class="row">
 
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' ])>
-                        <input type="text" name="name" id="name" placeholder="Enter Name" value="{{ @old('name') }}"/>
+                        <input type="text" name="name" id="name" placeholder="Enter Name" value="{{ @old('name') }}" class="form-control @error('name') is-invalid @enderror"/>
+                        @error('name')
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                        @enderror
                     </div>
                     <div @class(['col-lg-4','col-md-6','form-group','mt-3','mt-md-0',])>
-                        <input type="email" name="email" id="email" placeholder="Your Email" value="{{ @old('email') }}"
-                                 class="form-control"/>
-                        @error('name')
-                        <x-error>
+                        <input type="email" name="email" id="email" placeholder="Your Email" value="{{ @old('email') }}" class="form-control @error('email') is-invalid @enderror"/>
+                        @error('email')
+                        <span class="text-danger">
                             {{ $message }}
-                        </x-error>
+                        </span>
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' , 'mt-md-0' ])>
-                        <input type="text" name="phone" id="phone" placeholder="Your Phone" value="{{ @old('phone') }}"
-                                 class="form-control"/>
+                        <input type="text" name="phone" id="phone" placeholder="Your Phone" value="{{ @old('phone') }}" class="form-control @error('phone') is-invalid @enderror"/>
                         @error('phone')
-                        <x-error>
+                        <span class="text-danger">
                             {{ $message }}
-                        </x-error>
+                        </span>
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' ])>
-                        <input type="text" name="date" id="date" placeholder="Date" value="{{ @old('date') }}"
-                                 class="form-control"/>
+                        <input type="date" name="date" id="date" placeholder="Date" value="{{ @old('date') }}" class="form-control @error('date') is-invalid @enderror"/>
                         @error('date')
-                        <x-error>
+                        <span class="text-danger">
                             {{ $message }}
-                        </x-error>
+                        </span>
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' ])>
-                        <input type="text" name="time" id="time" placeholder="Time" value="{{ @old('time') }}"
-                                 class="form-control"/>
+                        <input type="time" name="time" id="time" placeholder="Time" value="{{ @old('time') }}" class="form-control @error('time') is-invalid @enderror"/>
                         @error('time')
-                        <x-error>
+                        <span class="text-danger">
                             {{ $message }}
-                        </x-error>
+                        </span>
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' ])>
-                        <input type="number" name="people" id="people" placeholder="# of people"
-                                 value="{{ @old('people') }}" class="form-control"/>
+                        <input type="number" name="people" id="people" placeholder="# of people" value="{{ @old('people') }}" class="form-control @error('people') is-invalid @enderror"/>
                         @error('people')
-                        <x-error>
+                        <span class="text-danger">
                             {{ $message }}
-                        </x-error>
+                        </span>
                         @enderror
                     </div>
                 </div>
                 <div @class(['form-group', 'mt-3' ])>
-                    <x-textarea name="message" placeholder="Message" class="form-control">
-
-                    </x-textarea>
+                    <textarea name="message" placeholder="Message" class="form-control" rows="5">{{ @old('message') }}</textarea>
                     @error('message')
-                    <x-error>
+                    <span class="text-danger">
                         {{ $message }}
-                    </x-error>
+                    </span>
                     @enderror
                 </div>
                 <div class="text-center">
