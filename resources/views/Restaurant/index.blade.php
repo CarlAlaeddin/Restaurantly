@@ -192,11 +192,11 @@
                 <div class="row">
 
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' ])>
-                        <x-input type="text" name="name" id="name" placeholder="Enter Name" value="{{ @old('name') }}"/>
+                        <input type="text" name="name" id="name" placeholder="Enter Name" value="{{ @old('name') }}"/>
                     </div>
                     <div @class(['col-lg-4','col-md-6','form-group','mt-3','mt-md-0',])>
-                        <x-input type="email" name="email" id="email" placeholder="Your Email" value="{{ @old('email') }}"
-                                 class="@error('name') is-invalid @enderror"/>
+                        <input type="email" name="email" id="email" placeholder="Your Email" value="{{ @old('email') }}"
+                                 class="form-control"/>
                         @error('name')
                         <x-error>
                             {{ $message }}
@@ -204,8 +204,8 @@
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' , 'mt-md-0' ])>
-                        <x-input type="text" name="phone" id="phone" placeholder="Your Phone" value="{{ @old('phone') }}"
-                                 class="@error('phone') is-invalid @enderror"/>
+                        <input type="text" name="phone" id="phone" placeholder="Your Phone" value="{{ @old('phone') }}"
+                                 class="form-control"/>
                         @error('phone')
                         <x-error>
                             {{ $message }}
@@ -213,8 +213,8 @@
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' ])>
-                        <x-input type="text" name="date" id="date" placeholder="Date" value="{{ @old('date') }}"
-                                 class="@error('date') is-invalid @enderror"/>
+                        <input type="text" name="date" id="date" placeholder="Date" value="{{ @old('date') }}"
+                                 class="form-control"/>
                         @error('date')
                         <x-error>
                             {{ $message }}
@@ -222,8 +222,8 @@
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' ])>
-                        <x-input type="text" name="time" id="time" placeholder="Time" value="{{ @old('time') }}"
-                                 class="@error('time') is-invalid @enderror"/>
+                        <input type="text" name="time" id="time" placeholder="Time" value="{{ @old('time') }}"
+                                 class="form-control"/>
                         @error('time')
                         <x-error>
                             {{ $message }}
@@ -231,8 +231,8 @@
                         @enderror
                     </div>
                     <div @class(['col-lg-4', 'col-md-6' , 'form-group' , 'mt-3' ])>
-                        <x-input type="number" name="people" id="people" placeholder="# of people"
-                                 value="{{ @old('people') }}" class="@error('people') is-invalid @enderror"/>
+                        <input type="number" name="people" id="people" placeholder="# of people"
+                                 value="{{ @old('people') }}" class="form-control"/>
                         @error('people')
                         <x-error>
                             {{ $message }}
@@ -241,7 +241,7 @@
                     </div>
                 </div>
                 <div @class(['form-group', 'mt-3' ])>
-                    <x-textarea name="message" placeholder="Message" class="@error('message') is-invalid @enderror">
+                    <x-textarea name="message" placeholder="Message" class="form-control">
 
                     </x-textarea>
                     @error('message')
@@ -426,56 +426,41 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <div class="form-group mt-3">
-                                    <x-input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        placeholder="Name"
-                                        value=" {{ old('name') }}"
-                                        class="@error('name') is-invalid @enderror"
-                                    />
+                                    <input type="text" name="name" id="name" placeholder="Name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror"/>
                                     @error('name')
-                                    <x-error>
+                                    <span class="text-danger">
                                         {{ $message }}
-                                    </x-error>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <div class="form-group mt-3">
-                                    <x-input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        placeholder="Email[at]Example.com"
-                                        value="{{ old('email') }}"
-                                        class="@error('email') is-invalid @enderror"
-                                    />
+                                    <input type="email" name="email" id="email" placeholder="Email[at]Example.com" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror"/>
                                     @error('email')
-                                    <x-error>
+                                    <span class="text-danger">
                                         {{ $message }}
-                                    </x-error>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="form-group mt-3">
-                                    <x-input type="text" name="subject" id="subject" placeholder="Subject" value="{{ old('subject') }}"
-                                             class="@error('subject') is-invalid @enderror"/>
+                                    <input type="text" name="subject" id="subject" placeholder="Subject" value="{{ old('subject') }}" class="form-control @error('subject') is-invalid @enderror" />
                                     @error('subject')
-                                    <x-error>
+                                    <span class="text-danger">
                                         {{ $message }}
-                                    </x-error>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="form-group mt-3">
-                                    <x-textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" placeholder="Message" row="10">{{ old('message') }}</x-textarea>
+                                    <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" placeholder="Message" rows="10">{{ old('message') }}</textarea>
                                     @error('message')
-                                    <x-error>
+                                    <span class="text-danger">
                                         {{ $message }}
-                                    </x-error>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
