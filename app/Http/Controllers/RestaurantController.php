@@ -23,7 +23,7 @@ class RestaurantController extends Controller
     public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
         // time for cache =>  sec 3600 = 1 hour
-        $ttl = 3600;
+        $ttl = 20;
 
         $chooses = Cache::remember('choose', $ttl, function () {
             return Choose::query()
