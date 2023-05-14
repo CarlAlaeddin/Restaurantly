@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReserveRequest;
 use App\Models\Reserve;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -32,10 +33,10 @@ class ReserveController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param StoreReserveRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreReserveRequest $request): RedirectResponse
     {
         $reserve = new Reserve([
             'user_id'     =>        auth()->user()->id,
@@ -54,27 +55,33 @@ class ReserveController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Reserve $reserve)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
+     * @param Reserve $reserve
+     * @return Factory|Application|View|\Illuminate\Contracts\Foundation\Application
      */
-    public function edit(Reserve $reserve)
+    public function edit(Reserve $reserve): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        return \view('Admin.pages.reserve.edit', compact('reserve'));
     }
 
     /**
      * Update the specified resource in storage.
+     * @param Request $request
+     * @param Reserve $reserve
+     * @return RedirectResponse
      */
-    public function update(Request $request, Reserve $reserve)
+    public function update(Request $request, Reserve $reserve): RedirectResponse
     {
-        //
+            $request->slug        =        null;
+            $request->name        =        $request->get('name');
+            $request->email       =        $request->get('email');
+            $request->phone       =        $request->get('phone');
+            $request->date        =        $request->get('date');
+            $request->time        =        $request->get('time');
+            $request->people      =        $request->get('people');
+            $request->message     =        $request->get('message');
+
+            return redirect()->back()->with('success', 'A table reserved for you has been successfully updated');
     }
 
     /**
@@ -82,6 +89,7 @@ class ReserveController extends Controller
      */
     public function destroy(Reserve $reserve)
     {
-        //
+        $reserve->delete();
+        return redirect()->back()->with('success', 'Your reservation has been cancelled');
     }
 }
