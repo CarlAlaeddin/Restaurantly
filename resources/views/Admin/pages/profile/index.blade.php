@@ -54,15 +54,15 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" aria-selected="false" tabindex="-1" role="tab">Edit Profile</button>
                             </li>
-                            @if(auth()->user()->id === $profile->user->id)
-                            <li class="nav-item" >
-                                <x-form action="{{ route('user.destroy',auth()->user()->id) }}" method="post">
-                                    <button class="nav-link text-danger" tabindex="-1">
-                                        Delete Account
-                                    </button>
-                                </x-form>
-                            </li>
-                            @endif
+{{--                            @if(auth()->user()->id === $profile->user->id)--}}
+{{--                            <li class="nav-item" >--}}
+{{--                                <x-form action="{{ route('user.destroy',auth()->user()->id) }}" method="post">--}}
+{{--                                    <button class="nav-link text-danger" tabindex="-1">--}}
+{{--                                        Delete Account--}}
+{{--                                    </button>--}}
+{{--                                </x-form>--}}
+{{--                            </li>--}}
+{{--                            @endif--}}
 
                         </ul>
                         <div class="tab-content pt-2">
