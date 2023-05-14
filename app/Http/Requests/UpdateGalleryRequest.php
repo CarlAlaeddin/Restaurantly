@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class UpdateGalleryRequest extends FormRequest
 {
@@ -11,18 +12,28 @@ class UpdateGalleryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if (auth()->check() && auth()->user()->profile->role === 1)
+        {
+            return true;
+        }
+        return abort(403);
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array
      */
+    #[ArrayShape([
+            'status'    =>      "string[]",
+            'image'     =>      "string[]"
+        ]
+    )]
     public function rules(): array
     {
         return [
-            //
+            'status'    =>      ['required','numeric'],
+            'image'     =>      ['required','mimes:jpg,bmp,png'],
         ];
     }
 }

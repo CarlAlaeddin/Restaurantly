@@ -24,10 +24,16 @@
                         <x-option value="1">Active</x-option>
                         <x-option value="0">DeActive</x-option>
                     </x-select>
+                    @error('status')
+                        {{ $message }}
+                    @enderror
                 </div>
 
                 <div class="col-md-6 my-2">
                     <x-input name="image" id="image" type="file" placeholder="new image" value="{{ old('image') }}" />
+                    @error('image')
+                        {{ $message }}
+                    @enderror
                 </div>
                 <div class="col-md-12">
                     <x-button type="submit" class="btn btn-primary">

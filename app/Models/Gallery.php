@@ -13,7 +13,7 @@ class Gallery extends Model
     protected $fillable = [
         'user_id',
         'status',
-        'image'
+        'image',
     ];
 
     protected $table = 'galleries';
