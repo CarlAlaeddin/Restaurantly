@@ -81,7 +81,7 @@
 
                 @foreach($menus as $menu)
                     <div class="col-lg-6 menu-item filter-{{$menu->tag->slug}}">
-                        <img src="{{ $menu->image }}" class="menu-img" alt="">
+                        <img src="{{ asset('/images/menu/'.$menu->image) }}" class="menu-img" alt="">
                         <div class="menu-content">
                             <a href="#">{{ $menu->name }}</a><span>${{ $menu->price }}</span>
                         </div>
