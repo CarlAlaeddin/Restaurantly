@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
@@ -164,5 +165,22 @@ Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
             Route::post('/update/{special}'  , 'update')     ->name('update');
             Route::post('/store'             , 'store')      ->name('store');
         });
+
+    #___________________________________________ Reserve
+    Route::prefix('/reserve')
+        ->controller(ReserveController::class)
+        ->name('reserve.')
+        ->group(function () {
+            Route::get('/'                   , 'index')      ->name('index');
+            Route::get('/create'             , 'create')     ->name('create');
+            Route::post('/store'             , 'store')      ->name('store');
+            Route::get('/show/{reserve}'     , 'show')       ->name('show');
+            Route::get('/edit/{reserve}'     , 'edit')       ->name('edit');
+            Route::post('/destroy/{reserve}' , 'destroy')    ->name('destroy');
+            Route::post('/update/{reserve}'  , 'update')     ->name('update');
+        });
+
+
+
 
 });
