@@ -19,39 +19,6 @@
         </li>
         <!-- End Components Nav -->
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-people-fill"></i>
-                <span>User Management</span>
-                <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('user.index') }}">
-                        <i class="fs-5 bi bi-eyeglasses"></i>
-                        <span>All Users</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('chef.index') }}">
-                        <i class="fs-5 bi bi-eyeglasses"></i>
-                        <span>All Chefs</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="fs-5 bi bi-person-plus-fill"></i>
-                        <span>New User</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('chef.create') }}">
-                        <i class="fs-5 bi bi-person-plus-fill"></i>
-                        <span>New Chef</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
         <!-- End Components Nav -->
 
         <li class="nav-item">

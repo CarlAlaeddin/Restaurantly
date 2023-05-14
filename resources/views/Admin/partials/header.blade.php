@@ -178,7 +178,8 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ auth()->user()->name }}</h6>
-                @switch(auth()->user()->profile->role)
+                @if(!empty(auth()->user()->profile->role))
+                    @switch(auth()->user()->profile->role)
                     @case(1)
                         @php $role = "Admin" @endphp
                     @break
@@ -189,7 +190,8 @@
                         @php $role = "User" @endphp
                     @break
                 @endswitch
-              <span>{{ $role }}</span>
+                    <span>{{ $role }}</span>
+                @endif
             </li>
             <li>
               <hr class="dropdown-divider">

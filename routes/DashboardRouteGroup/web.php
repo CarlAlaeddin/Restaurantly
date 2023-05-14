@@ -32,15 +32,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::prefix('/home')->middleware(['auth', 'verified'])->group(function () {
-    #__________________________________________ Users
-    Route::prefix('/user')
-        ->controller(UserController::class)
-        ->name('user.')
-        ->group(function () {
-            Route::get('/'                  , 'index')      ->name('index');
-            Route::get('/show/{user}'       , 'show')       ->name('show');
-            Route::post('/destroy/{user}'   , 'destroy')    ->name('destroy');
-        });
 
     #__________________________________________ Users
     Route::prefix('/profile')
