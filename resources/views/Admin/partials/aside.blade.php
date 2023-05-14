@@ -11,10 +11,9 @@
         </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ route('profile.index') }}">
+            <a class="nav-link" href="{{ route('profile.index') }}">
                 <i class="bi bi-person-square"></i>
                 <span>Profile</span>
-                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
         </li>
         <!-- End Components Nav -->
