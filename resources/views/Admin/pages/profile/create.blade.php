@@ -38,6 +38,9 @@
                                         <label for="about" class="col-md-4 col-lg-3 col-form-label">Biography</label>
                                         <div class="col-md-8 col-lg-9">
                                             <textarea name="biography" class="form-control" id="about" style="height: 100px">{{ old('biography') }}</textarea>
+                                            @error('biography')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -45,6 +48,9 @@
                                         <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="address" type="text" class="form-control" id="Address" value="{{ old('address') }}">
+                                            @error('address')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -52,6 +58,9 @@
                                         <label for="Address" class="col-md-4 col-lg-3 col-form-label">Beloved</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="beloved" type="text" class="form-control" id="Address" value="{{ old('beloved') }}">
+                                            @error('beloved')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -59,6 +68,9 @@
                                         <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="phone_number" type="text" class="form-control" id="Phone" value="{{ old('phone_number') }}">
+                                            @error('phone_number')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -66,6 +78,9 @@
                                         <div class="col-md-8 col-lg-9">
                                             <div class="pt-2">
                                                 <x-input name="image" type="file" id="image" placeholder="select profile image" value="{{ old('image') }}"/>
+                                                @error('image')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>

@@ -60,21 +60,6 @@ class ProfileController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Profile $profile)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Profile $profile)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -100,6 +85,11 @@ class ProfileController extends Controller
 
         $profile->user->name            =       $request->get('name');
         $profile->user->email           =       $request->get('email');
+
+        if ($profile->user->email === $request->get('email'))
+        {
+            $profile->user->email_verified_at = null;
+        }
 
         $profile->user->save();
 

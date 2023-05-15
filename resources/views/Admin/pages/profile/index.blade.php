@@ -101,7 +101,6 @@
                                 </div>
 
                             </div>
-
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit" role="tabpanel">
                                 <!-- Profile Edit Form -->
                                 <x-form method="POST" action="{{ route('profile.update',$profile->id) }}" enctype="multipart/form-data">
@@ -111,6 +110,9 @@
                                             <img src="{{ asset('/images/profile/'.$profile->image) }}" alt="Profile">
                                             <div class="pt-2">
                                                 <x-input name="image" type="file" id="image" placeholder="select profile image" value="{{ $profile->image }}" />
+                                                @error('image')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -119,6 +121,9 @@
                                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                                         <div class="col-md-8 col-lg-9">
                                             <x-input name="name" type="text" class="form-control" id="name" value="{{ $profile->user->name }}"  placeholder="FullName"/>
+                                            @error('name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -126,6 +131,9 @@
                                         <label for="about" class="col-md-4 col-lg-3 col-form-label">Biography</label>
                                         <div class="col-md-8 col-lg-9">
                                             <textarea name="biography" class="form-control" id="about" style="height: 100px">{{ $profile->biography }}</textarea>
+                                            @error('biography')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -133,6 +141,9 @@
                                         <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="address" type="text" class="form-control" id="Address" value="{{ $profile->address }}">
+                                            @error('address')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -140,6 +151,9 @@
                                         <label for="Address" class="col-md-4 col-lg-3 col-form-label">Beloved</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="beloved" type="text" class="form-control" id="Address" value="{{ $profile->beloved }}">
+                                            @error('beloved')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -147,6 +161,9 @@
                                         <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="phone_number" type="text" class="form-control" id="Phone" value="{{ $profile->phone_number }}">
+                                            @error('phone_number')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -154,6 +171,9 @@
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="email" type="email" class="form-control" id="Email" value="{{ $profile->user->email }}">
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
