@@ -10,8 +10,7 @@
                         <h3>RESTAURANTLY</h3>
                     </div>
                     <div @class(['col-md-12', 'my-2','form-group','mt-3','mt-md-0',])>
-                        <x-input type="email" name="email" id="email" placeholder="email[at]gmail.com" value="{{ @old('email') }}"
-                            class="@error('name') is-invalid @enderror" />
+                        <x-input type="email" name="email" id="email" placeholder="email[at]gmail.com" value="{{ @old('email') }}" />
                         @error('email')
                         <x-error>
                             {{ $message }}
@@ -19,8 +18,7 @@
                         @enderror
                     </div>
                     <div @class([ 'col-md-12', 'my-2' , 'form-group' , 'mt-3' , 'mt-md-0' ])>
-                        <x-input type="password" name="password" id="password" placeholder="password" value="{{ @old('password') }}"
-                            class="@error('password') is-invalid @enderror" />
+                        <x-input type="password" name="password" id="password" placeholder="password" value="{{ @old('password') }}"/>
                             @error('password')
                             <x-error>
                                 {{ $message }}
