@@ -34,19 +34,6 @@ Route::prefix('/home')->middleware(['auth', 'verified','check.role.users'])->gro
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    #__________________________________________ Users
-    Route::prefix('/profile')
-        ->controller(ProfileController::class)
-        ->name('profile.')
-        ->group(function () {
-            Route::get('/'                   , 'index')      ->name('index');
-            Route::get('/create'             , 'create')     ->name('create');
-            Route::get('/show/{profile}'     , 'show')       ->name('show');
-            Route::get('/edit/{profile}'     , 'edit')       ->name('edit');
-            Route::post('/destroy/{profile}' , 'destroy')    ->name('destroy');
-            Route::post('/update/{profile}'  , 'update')     ->name('update');
-            Route::post('/store'             , 'store')      ->name('store');
-        });
 
     #__________________________________________ Contact Form
     Route::prefix('/contact')
@@ -184,3 +171,20 @@ Route::prefix('/home')->middleware(['auth', 'verified','check.role.users'])->gro
 
 
 });
+
+
+
+#__________________________________________ Users
+Route::prefix('/profile')
+    ->controller(ProfileController::class)
+    ->name('profile.')
+    ->middleware(['auth','verified'])
+    ->group(function () {
+        Route::get('/'                   , 'index')      ->name('index');
+        Route::get('/create'             , 'create')     ->name('create');
+        Route::get('/show/{profile}'     , 'show')       ->name('show');
+        Route::get('/edit/{profile}'     , 'edit')       ->name('edit');
+        Route::post('/destroy/{profile}' , 'destroy')    ->name('destroy');
+        Route::post('/update/{profile}'  , 'update')     ->name('update');
+        Route::post('/store'             , 'store')      ->name('store');
+    });
