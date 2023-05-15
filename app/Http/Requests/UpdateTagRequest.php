@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
 class UpdateTagRequest extends FormRequest
 {
@@ -11,7 +12,11 @@ class UpdateTagRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        if (auth()->check() && auth()->user()->profile->role === 1)
+        {
+            return true;
+        }
+        return abort(403);
     }
 
     /**
@@ -19,10 +24,16 @@ class UpdateTagRequest extends FormRequest
      *
      * @return array
      */
+    #[ArrayShape([
+            'tag' => "string[]",
+            'status' => "string[]"
+        ]
+    )]
     public function rules(): array
     {
         return [
-            //
+            'tag'     =>    ['required','min:3','max:100','string'],
+            'status'  =>    ['required','numeric'],
         ];
     }
 }

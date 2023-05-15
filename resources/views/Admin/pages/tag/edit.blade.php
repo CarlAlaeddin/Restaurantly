@@ -25,6 +25,9 @@
                         placeholder="tag"
                         value="{{ $tag->tag }}"
                     />
+                    @error('tag')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <x-select name="status" id="status">
@@ -32,6 +35,9 @@
                         <x-option value="1">Active</x-option>
                         <x-option value="0">DeActive</x-option>
                     </x-select>
+                    @error('status')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-12 my-2">
                     <x-button type="submit" class="btn btn-primary">
