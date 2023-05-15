@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use JetBrains\PhpStorm\ArrayShape;
 
-class UpdateMenuRequest extends FormRequest
+class StoreMenuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -40,7 +40,7 @@ class UpdateMenuRequest extends FormRequest
             'category'      =>     ['required','array'],
             'name'          =>     ['required','min:10','max:100'],
             'price'         =>     ['required','numeric'],
-            'image'         =>     ['nullable','mimes:jpg,bmp,png'],
+            'image'         =>     ['required','mimes:jpg,bmp,png'],
             'status'        =>     ['required','numeric'],
         ];
     }

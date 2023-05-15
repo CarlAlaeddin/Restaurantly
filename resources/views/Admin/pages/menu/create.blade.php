@@ -25,6 +25,9 @@
                         placeholder="Enter your name"
                         value="{{ old('name') }}"
                     />
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <x-input
@@ -34,6 +37,9 @@
                         placeholder="Price"
                         value="{{ old('price') }}"
                     />
+                    @error('price')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6 my-2">
                     <x-select name="status" id="status">
@@ -41,6 +47,9 @@
                         <x-option value="1">Active</x-option>
                         <x-option value="0">DeActive</x-option>
                     </x-select>
+                    @error('status')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6 my-2">
                     <x-input
@@ -50,6 +59,9 @@
                         placeholder="Enter your image"
                         value="{{ old('image') }}"
                     />
+                    @error('image')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6 my-2">
                     <x-select name="tag_id" id="tag">
@@ -58,6 +70,9 @@
                             <x-option value="{{ $tag->id }}">{{ $tag->tag }}</x-option>
                         @endforeach
                     </x-select>
+                    @error('tag_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="col-md-12">

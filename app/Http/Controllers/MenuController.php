@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
 use App\Models\Category;
 use App\Models\Menu;
@@ -39,10 +40,10 @@ class MenuController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
+     * @param StoreMenuRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreMenuRequest $request): RedirectResponse
     {
         $image = time() . '-image-food' . '.' . $request->file('image')->getClientOriginalExtension();
 
