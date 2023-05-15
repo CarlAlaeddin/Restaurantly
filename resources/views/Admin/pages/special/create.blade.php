@@ -19,9 +19,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <x-input name="title" id="title" type="text" placeholder="Enter your title" value="{{ old('title') }}" />
+                    @error('title')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <x-input name="menu_name" id="menu_name" type="text" placeholder="Enter your menu_name" value="{{ old('menu_name') }}" />
+                    @error('menu_name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="col-md-6 my-2">
@@ -30,13 +36,22 @@
                         <x-option value="1">Active</x-option>
                         <x-option value="0">DeActive</x-option>
                     </x-select>
+                    @error('status')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="col-md-6 my-2">
                     <x-input name="image" id="image" type="file" placeholder="image" value="{{ old('image') }}"/>
+                    @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-md-12 my-2">
                     <x-textarea name="description" placeholder="enter text body">{{old('description')}}</x-textarea>
+                    @error('description')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-md-12">
                     <x-button type="submit" class="btn btn-primary">
