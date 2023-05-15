@@ -20,47 +20,6 @@
         <!-- End Components Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#chef" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person-dash"></i>
-                <span>Chef</span>
-                <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="chef" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('reserve.create') }}">
-                        <i class="fs-5 bi bi-plus"></i>
-                        <span>New Reserve</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('reserve.index') }}">
-                        <i class="fs-5 bi bi-eyeglasses"></i>
-                        <span>All Reserve</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!-- End Components Nav -->
-
-        <!-- End Components Nav -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#contact-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person-rolodex"></i>
-                <span>Contact</span>
-                <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="contact-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('contact.index') }}">
-                        <i class="fs-5 bi bi-eyeglasses"></i>
-                        <span>All Contact</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!-- End Components Nav -->
-
-        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#menu-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-up"></i>
                 <span>Menu</span>
@@ -77,29 +36,6 @@
                     <a href="{{ route('menu.index') }}">
                         <i class="fs-5 bi bi-eyeglasses"></i>
                         <span>All Menu</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!-- End Components Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#reserve-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-life-preserver"></i>
-                <span>Reserve</span>
-                <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="reserve-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('reserve.create') }}">
-                        <i class="fs-5 bi bi-plus"></i>
-                        <span>New Reserve</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('reserve.index') }}">
-                        <i class="fs-5 bi bi-eyeglasses"></i>
-                        <span>All Reserve</span>
                     </a>
                 </li>
             </ul>
@@ -220,6 +156,73 @@
             </ul>
         </li>
         <!-- End Components Nav -->
+
+
+        @if(auth()->user()->profile->role === 1)
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#chef" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-dash"></i>
+                    <span>Chef</span>
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="chef" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('reserve.create') }}">
+                            <i class="fs-5 bi bi-plus"></i>
+                            <span>New Reserve</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('reserve.index') }}">
+                            <i class="fs-5 bi bi-eyeglasses"></i>
+                            <span>All Reserve</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Components Nav -->
+
+            <!-- End Components Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#contact-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-rolodex"></i>
+                    <span>Contact</span>
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="contact-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('contact.index') }}">
+                            <i class="fs-5 bi bi-eyeglasses"></i>
+                            <span>All Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Components Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#reserve-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-life-preserver"></i>
+                    <span>Reserve</span>
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="reserve-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('reserve.create') }}">
+                            <i class="fs-5 bi bi-plus"></i>
+                            <span>New Reserve</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('reserve.index') }}">
+                            <i class="fs-5 bi bi-eyeglasses"></i>
+                            <span>All Reserve</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Components Nav -->
+        @endif
 
     </ul>
 
