@@ -26,7 +26,7 @@
                             @enderror
                     </div>
                 <div class="text-center">
-                    <x-button type="submit" class="my-2 btn btn-md btn-warning">Register Account</x-button>
+                    <x-button type="submit" class="my-2 btn btn-md btn-success">Login Account</x-button>
                     <p class="text-dark my-2">Or</p>
                     <p  class="text-dark"><a href="{{ route('register') }}">Do you not have a user account?</a></p>
                 </div>
