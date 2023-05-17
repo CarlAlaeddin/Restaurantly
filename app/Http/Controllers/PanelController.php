@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEventRequest;
 use App\Models\Event;
+use App\Models\User;
+use App\Trait\notificationTrait;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -12,14 +14,19 @@ use Illuminate\Support\Facades\Notification;
 
 class PanelController
 {
+    use notificationTrait;
 
     /**
      * @return Factory|Application|View|\Illuminate\Contracts\Foundation\Application
      */
     public function index(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
+        $notifications      = $this->notificationMessage();
+        $notificationCount  = $this->notificationCounter();
+
         $events = Event::query()->orderBy('id','desc')->where('status','LIKE',1)->paginate(10);
-        return view('Panel.index',compact(['events']));
+
+        return view('Panel.index',compact(['events','notifications','notificationCount']));
     }
 
 
@@ -28,7 +35,10 @@ class PanelController
      */
     public function event(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        return view('Panel.pages.event.create');
+        $notifications      = $this->notificationMessage();
+        $notificationCount  = $this->notificationCounter();
+
+        return view('Panel.pages.event.create',compact(['notifications','notificationCount']));
     }
 
 
