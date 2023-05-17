@@ -12,11 +12,9 @@ class StoreEventRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (auth()->check() && auth()->user()->profile->role === 1)
-        {
-            return true;
-        }
-        return abort(403);
+
+        return true;
+
     }
 
     /**
