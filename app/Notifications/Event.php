@@ -55,24 +55,14 @@ class Event extends Notification
      */
     #[ArrayShape([
             'name'          => "mixed",
-            'title'         =>  "",
-            'price'         =>  "",
-            'body'          =>  "",
-            'status'        =>  "",
-            'created_at'    =>  "",
-            'updated_at'    =>  ""
+            'message'       =>  "",
+            'created_at'    =>  ""
         ])
     ]
     public function toArray(object $notifiable): array
     {
         return [
-            'name'          =>  $notifiable->name,
-            'title'         =>  $this->event->title,
-            'price'         =>  $this->event->price,
-            'body'          =>  $this->event->body,
-            'status'        =>  $this->event->status,
-            'created_at'    =>  $this->event->created_at,
-            'updated_at'    =>  $this->event->updated_at
+            'message'       =>  'Dear '.$notifiable->name . ' You have registered an event and it is waiting for confirmation | '.$this->event->created_at->format('Y-M-D'),
         ];
     }
 }
