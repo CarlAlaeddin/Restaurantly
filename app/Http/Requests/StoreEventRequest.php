@@ -27,7 +27,6 @@ class StoreEventRequest extends FormRequest
             'title'     =>      "string[]",
             'price'     =>      "string[]",
             'body'      =>      "string[]",
-            'status'    =>      "string[]"
         ]
     )]
     public function rules(): array
@@ -37,7 +36,6 @@ class StoreEventRequest extends FormRequest
             'title'     =>     ['required','min:10','max:30'],
             'price'     =>     ['required','numeric'],
             'body'      =>     ['required','min:50','max:1000'],
-            'status'    =>     ['required','numeric'],
         ];
     }
 }
