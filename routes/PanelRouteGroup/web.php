@@ -11,5 +11,6 @@ Route::prefix('/home/panel')
     ->group(function () {
         Route::get('/','index')->name('index');
         Route::get('/event','event')->name('event');
+        Route::post('/store','storeEvent')->name('event.store');
         Route::get('/all-event','all_event')->name('all-event');
     });
