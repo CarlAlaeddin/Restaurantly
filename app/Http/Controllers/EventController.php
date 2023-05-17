@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Notification;
 
 class EventController extends Controller
 {
@@ -49,6 +50,8 @@ class EventController extends Controller
         ]);
 
         $event->save();
+        $user = auth()->user();
+        Notification::send($user, new \App\Notifications\Event($event));
         $request->image->move('images/event', $image);
         return redirect()->route('event.index')->with('success', 'Your event has been successfully created');
     }
