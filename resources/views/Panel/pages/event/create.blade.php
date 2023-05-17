@@ -1,7 +1,7 @@
 @extends('Panel.layouts.app')
 @section('content')
     <div class="col-lg-12 my-2 p-5 border rounded bg-white">
-        <x-form method="POST" action="{{ route('event.store') }}" enctype="multipart/form-data">
+        <x-form method="POST" action="{{ route('panel.event.store') }}" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
                     <x-input name="title" id="title" type="text" placeholder="Enter your title" value="{{ old('title') }}" />
