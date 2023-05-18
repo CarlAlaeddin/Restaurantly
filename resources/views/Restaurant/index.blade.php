@@ -155,7 +155,7 @@
                         <div class="swiper-slide">
                             <div class="row event-item">
                                 <div class="col-lg-6">
-                                    <img src="{{ $event->image }}" class="img-fluid rounded" alt="{{ $event->title }}">
+                                    <img src="{{ asset('/images/event/'.$event->image) }}" class="img-fluid rounded" alt="{{ $event->title }}">
                                 </div>
                                 <div class="col-lg-6 pt-4 pt-lg-0 content">
                                     <h3>{{ $event->title }}</h3>
