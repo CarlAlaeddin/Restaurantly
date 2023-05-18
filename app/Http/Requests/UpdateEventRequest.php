@@ -35,7 +35,7 @@ class UpdateEventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image'     =>     ['required','mimes:jpg,bmp,png'],
+            'image'     =>     ['nullable','mimes:jpg,bmp,png'],
             'title'     =>     ['required','min:10','max:30'],
             'price'     =>     ['required','numeric'],
             'body'      =>     ['required','min:50','max:1000'],

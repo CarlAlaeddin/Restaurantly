@@ -41,7 +41,7 @@
                         <x-option value="1">Active</x-option>
                         <x-option value="0">DeActive</x-option>
                     </x-select>
-                    @error('image')
+                    @error('status')
                     <span class="text-danger">
                             {{ $message }}
                         </span>
@@ -50,6 +50,11 @@
 
                 <div class="col-md-6 my-2">
                     <x-input name="image" id="image" type="file" placeholder="image" value="{{ $event->image }}"/>
+                    @error('image')
+                    <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                 </div>
                 <div class="col-md-12 my-2">
                     <x-textarea name="body" placeholder="enter text body">{{$event->body}}</x-textarea>

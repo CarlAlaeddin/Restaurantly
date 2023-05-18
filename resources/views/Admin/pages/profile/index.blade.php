@@ -1,5 +1,5 @@
 @extends('Admin.layouts.app')
-
+@if(auth()->user()->profile->role === 1 || auth()->user()->profile->role === 2)
 @section('breadcrumb')
     <x-breadcrumb>
         <x-title>
@@ -12,7 +12,7 @@
         </x-nav>
     </x-breadcrumb>
 @endsection
-
+@endif
 @section('content')
     <section class="section profile">
         <div class="row">

@@ -175,7 +175,7 @@ Route::prefix('/home')->middleware(['auth', 'verified','check.role.users'])->gro
 
 
 #__________________________________________ Users
-Route::prefix('/profile')
+Route::prefix('/home/profile')
     ->controller(ProfileController::class)
     ->name('profile.')
     ->middleware(['auth','verified'])
