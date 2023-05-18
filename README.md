@@ -1,4 +1,4 @@
->>> #   Restaurantly Project
+#   Restaurantly Project
 -----
 
 This project is under development and not completed. In this project,theadmin panel is separated from the user panel, and the accesslevel is set for three types of users (admin, author, normal user).
